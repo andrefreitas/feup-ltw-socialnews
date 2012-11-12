@@ -27,7 +27,7 @@ create table userActionPrivilege (
 	userActionId integer
 );
 
-/* Users */
+/* User */
 drop table if exists user;
 create table user(
 	id integer primary key autoincrement,
@@ -38,8 +38,8 @@ create table user(
 );
 
 /* News*/
-drop table if exists new;
-create table new(
+drop table if exists news;
+create table news(
 	id integer primary key autoincrement,
 	title text,
 	datePosted date,
@@ -48,7 +48,7 @@ create table new(
 	userId integer
 );
 
-/* Comments */
+/* Comment */
 drop table if exists comment;
 create table comment(
 	id integer primary key autoincrement,
@@ -75,8 +75,8 @@ create table tag(
 );
 
 /* Tags * - * News */
-drop table if exists newTag;
-create table newTag(
+drop table if exists newsTag;
+create table newsTag(
 	newId integer,
 	tagId integer
 );
