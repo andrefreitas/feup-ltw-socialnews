@@ -210,7 +210,25 @@
 
 .user{
 	width: 200px;
-	height: 200px;
+	height: 150px;
 	margin-top:30px;
 	background: #d1382d;
+	box-shadow: 6px 3px 6px rgba(0,0,0,0.1) inset;
+	border:solid 1px #a21a1a;
+	border-left:none;
+}
+
+.user h3{
+	text-transform:uppercase;
+	background:url(../imgs/user.png) no-repeat;
+	text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+	background-position:40px 10px;
+	font-weight:bold;
+	font-size:14px;
+	color:#ffffff;
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px;
+	box-shadow: 6px 3px 6px rgba(0,0,0,0.1);
+	
 }
