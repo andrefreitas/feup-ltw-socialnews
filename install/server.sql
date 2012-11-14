@@ -80,3 +80,11 @@ create table newsTag(
 	newId integer,
 	tagId integer
 );
+
+/* List of external server with news web services*/
+drop table if exists newsServer;
+create table newsServer(
+	serverId integer primary key autoincrement,
+	name text,
+	apiurl text
+);
