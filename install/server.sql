@@ -42,6 +42,7 @@ drop table if exists news;
 create table news(
 	id integer primary key autoincrement,
 	title text,
+	thumbnail text,
 	datePosted date,
 	timePosted text,
 	content text,

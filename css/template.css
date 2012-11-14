@@ -188,3 +188,29 @@
 	margin:0 auto;
 	float: right;
 }
+
+#main{
+	margin-top:10px;
+}
+
+.news{
+	margin:0 auto;
+	float:left;
+	width: 698px;
+	min-height:500px;
+	border:solid 1px #CCC;
+	box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, .2);
+}
+.sidebar{
+	margin:0 auto;
+	float:left;
+	width: 200px;
+	min-height:500px;
+}
+
+.user{
+	width: 200px;
+	height: 200px;
+	margin-top:30px;
+	background: #d1382d;
+}
