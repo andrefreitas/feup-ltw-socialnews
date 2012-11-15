@@ -10,7 +10,8 @@ create table serverInfo(
 drop table if exists userAction;
 create table userAction (
 	id integer primary key autoincrement,
-	name text
+	name text,
+	description text
 );
 
 /* Privileges */
@@ -48,7 +49,6 @@ create table news(
 	title text,
 	thumbnail text,
 	datePosted date,
-	timePosted text,
 	content text,
 	userId integer,
 	metricsId integer,
@@ -62,7 +62,6 @@ create table comment(
 	id integer primary key autoincrement,
 	content text,
 	datePosted date,
-	timePosted text,
 	userId integer,
 	newsId integer,
 	foreign key(userId) references user(id),
@@ -74,7 +73,8 @@ drop table if exists favorite;
 create table favorite(
 	id integer primary key autoincrement,
 	userId integer,
-	newId integer
+	newsId integer,
+	foreign key(newsID) references news(id)
 );
 
 /* Tags */
@@ -119,10 +119,19 @@ drop view if exists latestNews;
 create view latestNews As 
 	select * from news order by datePosted;
 
+/* List news with metrics */
+
+drop view if exists topNews;
+create view topNews As
+	select id , pageviews*0.3+ searchs*0.3 + comments*0.4 as Score
+	from newsMetrics
+	order by Score DESC;
+
+
 /* List top commenters */
 drop view if exists topCommenters;
 create view topCommenters As
-	select user.name,user.id, count(*) as total
+	select user.id, count(*) as total
 	from user,comment
 	where user.id=comment.userId
 	group by user.id
@@ -131,7 +140,7 @@ create view topCommenters As
 /* List the top tags */
 drop view if exists topTags;
 create view topTags As
-	select tag.name,tag.id, count(*) as totalUsed
+	select tag.id, count(*) as totalUsed
 	from tag,newsTag
 	where tag.id=newsTag.tagId
 	group by tag.id
@@ -152,23 +161,21 @@ after insert on news
     insert into newsMetrics(newsId,pageviews,searchs,comments)
     values (new.id,0,0,0);
   END;
+  
+/* Trigger to remove news */
+create trigger removeNews
+after delete on news
+  BEGIN
+    delete from comment
+    where newsId=old.id;
 
-/* Tests 
+    delete from newsMetrics
+    where newsId=old.id;
 
-insert into user(name) values('Joao');
-insert into user(name) values('Carlos');
-insert into user(name) values('Maria');
+    delete from favorite
+    where newsId=old.id;
+  END;
 
-insert into comment(userId) values(2);
-insert into comment(userId) values(3);
-insert into comment(userId) values(3);
 
-insert into tag(name) values("sport");
-insert into tag(name) values("cars");
 
-insert into newsTag(tagId) values(1);
-insert into newsTag(tagId) values(2);
-insert into newsTag(tagId) values(2);
-
-insert into newsTag(tagId) values(2);
-	*/
+	
