@@ -123,7 +123,16 @@ create table newsMetrics(
 /* List latest news */
 drop view if exists latestNews;
 create view latestNews As 
-	select * from news order by datePosted;
+	select date(dateposted) as date, time(dateposted) as time,*
+	from news 
+	order by date DESC, time DESC;
+
+/* Latest comments */
+drop view if exists latestComments;
+create view latestComments As 
+	select date(dateposted) as date, time(dateposted) as time,*
+	from comment 
+	order by date DESC, time DESC;
 
 /* List news with metrics */
 

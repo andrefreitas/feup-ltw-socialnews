@@ -45,7 +45,7 @@ insert into user(name, email, password,privilegeId)
 /* News (copyright from BBC) */
 
 insert into news(title, datePosted,userId,content)
-	values("Eurozone slides into recession","2012-10-3T14:32:01",7,"The eurozone has returned to recession as the region's debt crisis continues to hurt demand, figures show.
+	values("Eurozone slides into recession","2012-10-03T14:32:01",7,"The eurozone has returned to recession as the region's debt crisis continues to hurt demand, figures show.
 The economy of the 17-nation bloc contracted by 0.1% between July and September, after shrinking 0.2% in the previous three months, Eurostat said.
 The eurozone was last in recession in 2009, when the economy contracted for five consecutive quarters.
 The news comes a day after millions of workers in Europe held a day of action against austerity measures.
@@ -53,28 +53,28 @@ Protests in Spain, Italy and Portugal were marred by violence.
 Countries such as Greece that have been bailed out by international lenders continue to see their economies shrink. Meanwhile larger economies such as Spain have imposed spending cuts in an attempt to avoid having to ask for a bailout.");
 
 insert into news(title, datePosted,userId,content)
-	values("Breakfast, lunch and dinner: Have we always eaten them?","2012-11-4T8:17:05",7,
+	values("Breakfast, lunch and dinner: Have we always eaten them?","2012-11-04T08:17:05",7,
 		"British people - and many others across the world - have been brought up on the idea of three square meals a day as a normal eating pattern, but it wasn't always that way.
 		People are repeatedly told the hallowed family dinner around a table is in decline and the UK is not the only country experiencing such change.
 		The case for breakfast, missed by many with deleterious effects, is that it makes us more alert, helps keep us trim and improves children's work and behaviour at school.
 		But when people worry that breaking with the traditional three meals a day is harmful, are they right about the traditional part? Have people always eaten in that pattern?");
 
 insert into news(title, datePosted,userId,content)
-	values("Is Zlatan's wonder strike the best goal ever scored?","2012-11-1T18:54:12",7,"Zlatan Ibrahimovic has dominated backpages all over the world since scoring an audacious overhead kick in 
+	values("Is Zlatan's wonder strike the best goal ever scored?","2012-11-01T18:54:12",7,"Zlatan Ibrahimovic has dominated backpages all over the world since scoring an audacious overhead kick in 
 		Sweden's 4-2 win over England on Wednesday. 
 		CNN charts social media reaction as people debate whether Ibrahimovic's goal was was the greatest ever scored..");
 
 insert into news(title, datePosted,userId,content)
-	values("Can Twitter help save Spanish soccer club Real Oviedo?","2012-9-5T11:02:56",7,"In an age when Russian oligarchs and Arab Sheikhs spend billions of dollars on forging the perfect dream team, 
+	values("Can Twitter help save Spanish soccer club Real Oviedo?","2012-09-05T11:02:56",7,"In an age when Russian oligarchs and Arab Sheikhs spend billions of dollars on forging the perfect dream team, 
 		fan ownership has become a novelty for many of Europe's top soccer clubs. 
 		But it is a route that might just be the salvation of struggling Spanish team Real Oviedo, thanks to a social media campaign that has gone viral.");
 
 insert into news(title, datePosted,userId,content)
-	values("Spanish banks stop evictions for the next 2 years","2012-3-1T20:31:07",7,"Spaniards who are in circumstances of extreme necessity and are unable to pay their mortgages will not be evicted from their 
+	values("Spanish banks stop evictions for the next 2 years","2012-03-01T20:31:07",7,"Spaniards who are in circumstances of extreme necessity and are unable to pay their mortgages will not be evicted from their 
 		homes over the next two years, the main industry group for Spanish banks said Monday.");
 
 insert into news(title, datePosted,userId,content)
-	values("After months of mystery, China unveils new top leaders","2012-10-9T4:32:08",8,"China on Thursday unveiled the elite group of leaders who will set the agenda for the country for the next decade, 
+	values("After months of mystery, China unveils new top leaders","2012-10-09T04:32:08",8,"China on Thursday unveiled the elite group of leaders who will set the agenda for the country for the next decade, 
 		the culmination of months of secretive bargaining and a carefully choreographed performance of political pomp.");
 
 insert into news(title, datePosted,userId,content)
@@ -83,30 +83,30 @@ insert into news(title, datePosted,userId,content)
 		GPS asked 10 leading foreign policy analysts to name 10 things that Obama should focus on next. The views expressed are, of course, the authors' own.");
 
 insert into news(title, datePosted,userId,content)
-	values("Who was the best foreign policy president?","2012-9-19T18:12:56",8," Both for his leadership turning one of our country’s moments of greatest vulnerability into the triumph of World War II, 
+	values("Who was the best foreign policy president?","2012-09-19T18:12:56",8," Both for his leadership turning one of our country’s moments of greatest vulnerability into the triumph of World War II, 
 		and for the vision to begin building the postwar peace, Franklin D. Roosevelt deserves the highest ranking. 
 		Congressional isolationists had blocked most of FDR’s efforts to start mobilizing the American industrial base and preparing the American people for the war. ");
 
 insert into news(title, datePosted,userId,content)
-	values("Time to Say Danke","2012-10-3T19:22:55",8,"Everyone is worried that Greece will default on its national debt. That's really not news. By one estimate, since it gained its independence from the Ottomans in 1832, 
+	values("Time to Say Danke","2012-10-03T19:22:55",8,"Everyone is worried that Greece will default on its national debt. That's really not news. By one estimate, since it gained its independence from the Ottomans in 1832, 
 		Greece has been in default or restructuring for half this period. The news is that this time, Germany is willing to bail it out.");
 
 insert into news(title, datePosted,userId,content)
-	values("Reading While Eating for Nov. 15: State of the Union","2012-8-14T21:00:38",8,"Secessionists, Unite! More than half a million people from all 50 states have signed on to the 
+	values("Reading While Eating for Nov. 15: State of the Union","2012-08-14T21:00:38",8,"Secessionists, Unite! More than half a million people from all 50 states have signed on to the 
 		White House petition site We The People in order to demand that their state be allowed to secede from the union following Obama’s reelection. 
 		Of course,  others are just looking out for Alderaan. (TIME.com)
 ");
 
 	insert into news(title, datePosted,userId,content)
-	values("$800 million biotech business started in a garage","2012-3-3T0:11:18",9,"Bangalore, India (CNN) -- As one of India's richest self-made women, Kiran Mazumdar-Shaw has an impressive 
+	values("$800 million biotech business started in a garage","2012-03-03T00:11:18",9,"Bangalore, India (CNN) -- As one of India's richest self-made women, Kiran Mazumdar-Shaw has an impressive 
 		resume. Her business Biocon, worth $800million, is one of India's leading drug companies and employs more than 6,000 people at its vast campus in Bangalore.");
 
 insert into news(title, datePosted,userId,content)
-	values("From muse to moneymaker","2012-4-23T15:38:46",9,"From Warhol's silkscreens of Marilyn Monroe to Picasso's nudes, it has generally been easier for women to be the 
+	values("From muse to moneymaker","2012-04-23T15:38:46",9,"From Warhol's silkscreens of Marilyn Monroe to Picasso's nudes, it has generally been easier for women to be the 
 		subject of paintings than to have their own work exhibited.");
 
 insert into news(title, datePosted,userId,content)
-	values("Cristiano Ronaldo and Daniel Craig - A right to privacy?","2012-11-4T16:22:56",9,"Both men have their photos plastered across billboards worldwide, their pictures on television 
+	values("Cristiano Ronaldo and Daniel Craig - A right to privacy?","2012-11-04T16:22:56",9,"Both men have their photos plastered across billboards worldwide, their pictures on television 
 		commercials broadcast around the globe and their private lives played out on the internet.
 So why do the likes of Craig and Ronaldo, who make millions of dollars from their public image, believe they deserve privacy?");
 
@@ -115,11 +115,11 @@ insert into news(title, datePosted,userId,content)
 		was in effect dead for 78 minutes before his heart started beating again, doctors who treated him have revealed.");
 
 insert into news(title, datePosted,userId,content)
-	values("America's black cowboys fight for their place in history","2012-10-8T11:26:17",9,"Jason Griffin straps his right arm in bandages, preparing himself to grip the reins a wildly bucking bronco. Tall, broad-shouldered, 
+	values("America's black cowboys fight for their place in history","2012-10-08T11:26:17",9,"Jason Griffin straps his right arm in bandages, preparing himself to grip the reins a wildly bucking bronco. Tall, broad-shouldered, 
 		with a rough beard, he steps into his cowboy boots, fits a Stetson hat and heads out to meet his mount in the rodeo arena.");
 
 	insert into news(title, datePosted,userId,content)
-	values("Chinese sculptor Xiang Jing's painful search for truth","2012-9-7T8:48:45",8,"Her work has been exhibited in America and throughout Europe. She was the subject of a recent joint survey show at the Museum of Contemporary Art Shanghai. 
+	values("Chinese sculptor Xiang Jing's painful search for truth","2012-09-07T08:48:45",8,"Her work has been exhibited in America and throughout Europe. She was the subject of a recent joint survey show at the Museum of Contemporary Art Shanghai. 
 		She was one of four winners of this year's Martell Artists of the Year competition and was also recently featured in Italian Vogue.");
 
 insert into news(title, datePosted,userId,content)
@@ -131,12 +131,12 @@ insert into news(title, datePosted,userId,content)
 		Here she reveals how she fell in love with the sport and her heartache when she almost couldn't carry on");
 
 insert into news(title, datePosted,userId,content)
-	values("Clouds on horizon for tobacco farmers","2012-10-6T16:59:17",9,"Government officials and health experts from around the world are meeting this week in South Korea to discuss a series of proposals that could put 
+	values("Clouds on horizon for tobacco farmers","2012-10-06T16:59:17",9,"Government officials and health experts from around the world are meeting this week in South Korea to discuss a series of proposals that could put 
 		restrictions on tobacco growing.The fifth session of the World Health Organization Framework Convention on Tobacco Control (WHO FCTC) is taking place in Seoul, where representatives 
 		from over 170 international parties will focus on reducing the demand for tobacco.");
 
 insert into news(title, datePosted,userId,content)
-	values("Oil search fuels tension over Lake Malawi","2012-7-3T18:32:07",7,"Lake Malawi, Malawi (CNN) -- Following recent oil finds in Uganda and Kenya, Malawi hopes to be the next East African country to strike black gold.
+	values("Oil search fuels tension over Lake Malawi","2012-07-03T18:32:07",7,"Lake Malawi, Malawi (CNN) -- Following recent oil finds in Uganda and Kenya, Malawi hopes to be the next East African country to strike black gold.
 Malawi has awarded British oil company Surestream Petroleum the only contract to search for oil beneath Lake Malawi, the body of water that borders Malawi, Mozambiue and Tanzania.");
 
 /* Tags */

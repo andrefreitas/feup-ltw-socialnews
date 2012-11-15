@@ -26,6 +26,12 @@ class DataController{
 		return $author->fetch(PDO::FETCH_ASSOC);
 	}
 	
+	public function getNewsFilter($tags,$start_date,$end_date){
+		// First fetch all news ids
+		//$news_ids=$this->dataBase->query('SELECT id FROM news where date>=');
+		//$news_ids=$news_ids->fetchAll(PDO::FETCH_ASSOC);;
+		// Check for every new
+	}
 	
 };
 
@@ -33,5 +39,5 @@ $obj=new DataController('server.db');
 $result=$obj->getNews();
 $result=$obj->getComments(2);
 $result=$obj->getNewsAuthor(1);
-	
+$result=$obj->getNewsFilter(1,1,1);
 ?>
