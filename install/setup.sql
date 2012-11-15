@@ -1,8 +1,7 @@
 /* Server Information */
 drop table if exists serverInfo;
 create table serverInfo(
-	name text primary key,
-	adminEmail text
+	name text primary key
 );
 
 
@@ -51,9 +50,7 @@ create table news(
 	datePosted date,
 	content text,
 	userId integer,
-	metricsId integer,
-	foreign key(userId) references user(id),
-	foreign key(metricsId) references newsMetrics(id)
+	foreign key(userId) references user(id)
 );
 
 /* Comment */
@@ -176,6 +173,114 @@ after delete on news
     where newsId=old.id;
   END;
 
+/***********************************************************
+					    DEFAULT DATA
+***********************************************************/
 
+/* Create Privileges  */
+insert into privilege(name) values("admin");
+insert into privilege(name) values("editor");
+insert into privilege(name) values("user");
+insert into privilege(name) values("guest");
 
-	
+/* Create Possible Actions 
+	Syntax: (action)(objects)
+*/
+insert into userAction(name,description) values("seeNews","Can view all the news");
+insert into userAction(name,description) values("searchNews","Can search news");
+insert into userAction(name,description) values("seeNewsDetails","Can see news details such as comments");
+insert into userAction(name,description) values("seeProfile","Can see users profiles");	
+insert into userAction(name,description) values("register","Can register in the website");
+insert into userAction(name,description) values("login","Can login in the website");
+insert into userAction(name,description) values("createComment","Can post comments");
+insert into userAction(name,description) values("editOwnComment","Can edit own comments");
+insert into userAction(name,description) values("deleteOwnComment","Can delete own comments");
+insert into userAction(name,description) values("editOwnProfile","Can edit own profile");
+insert into userAction(name,description) values("favoriteNews","Can mark or unmark news as favorites");
+insert into userAction(name,description) values("seeFavoriteNews","Can see favorite news");
+insert into userAction(name,description) values("logout","Can logout from the website");
+insert into userAction(name,description) values("createNews","Can create news");
+insert into userAction(name,description) values("editOwnNews","Can edit own news");
+insert into userAction(name,description) values("deleteOwnNews","Can delete own news");
+insert into userAction(name,description) values("deleteOwnNewsComments","Can delete own news");
+insert into userAction(name,description) values("editPrivileges","Can change users privileges");
+insert into userAction(name,description) values("deleteNews","Can delete all news");
+insert into userAction(name,description) values("editNews","Can edit all news");
+insert into userAction(name,description) values("createUsers","Can create users");
+insert into userAction(name,description) values("editUsers","Can edit users");
+insert into userAction(name,description) values("deleteUsers","Can delete users");
+insert into userAction(name,description) values("doallNewsServers","Can do all in the news remote servers");
+insert into userAction(name,description) values("searchRemoteNews","Can search remote news");
+insert into userAction(name,description) values("importRemoteNews","Can import remote news");
+
+/* Map privileges */
+
+/* Admin */
+insert into userActionPrivilege(privilegeId,userActionId) values(1,1);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,2);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,3);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,4);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,5);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,6);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,7);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,8);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,9);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,10);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,11);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,12);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,13);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,14);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,15);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,16);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,17);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,18);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,19);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,20);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,21);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,22);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,23);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,24);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,25);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,26);
+
+/* Editor */
+insert into userActionPrivilege(privilegeId,userActionId) values(2,1);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,2);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,3);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,4);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,5);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,6);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,7);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,8);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,9);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,10);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,11);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,12);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,13);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,14);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,15);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,16);
+insert into userActionPrivilege(privilegeId,userActionId) values(2,17);
+
+/* User */
+insert into userActionPrivilege(privilegeId,userActionId) values(3,1);
+insert into userActionPrivilege(privilegeId,userActionId) values(3,2);
+insert into userActionPrivilege(privilegeId,userActionId) values(3,3);
+insert into userActionPrivilege(privilegeId,userActionId) values(3,4);
+insert into userActionPrivilege(privilegeId,userActionId) values(3,5);
+insert into userActionPrivilege(privilegeId,userActionId) values(3,6);
+insert into userActionPrivilege(privilegeId,userActionId) values(3,7);
+insert into userActionPrivilege(privilegeId,userActionId) values(3,8);
+insert into userActionPrivilege(privilegeId,userActionId) values(3,9);
+insert into userActionPrivilege(privilegeId,userActionId) values(3,10);
+insert into userActionPrivilege(privilegeId,userActionId) values(3,11);
+insert into userActionPrivilege(privilegeId,userActionId) values(3,12);
+insert into userActionPrivilege(privilegeId,userActionId) values(3,13);
+
+/* Guest */
+insert into userActionPrivilege(privilegeId,userActionId) values(4,1);
+insert into userActionPrivilege(privilegeId,userActionId) values(4,2);
+insert into userActionPrivilege(privilegeId,userActionId) values(4,3);
+insert into userActionPrivilege(privilegeId,userActionId) values(4,4);
+insert into userActionPrivilege(privilegeId,userActionId) values(4,5);
+insert into userActionPrivilege(privilegeId,userActionId) values(4,6);
