@@ -41,6 +41,13 @@ create table user(
 	foreign key(privilegeId) references privilege(id)
 );
 
+/* Category */
+drop table if exists category;
+create table category(
+	id integer primary key autoincrement,
+	name text
+);
+
 /* News*/
 drop table if exists news;
 create table news(
@@ -50,8 +57,10 @@ create table news(
 	datePosted date,
 	content text,
 	userId integer,
+	categoryId integer,
 	foreign key(userId) references user(id)
 );
+
 
 /* Comment */
 drop table if exists comment;
