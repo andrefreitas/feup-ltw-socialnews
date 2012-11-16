@@ -59,6 +59,12 @@ class DataController{
 		}
 		return $tags;
 	}
+	
+	public function getNewsByUrl($url){
+		$news=$this->dataBase->query('SELECT * FROM news where url=\''.$url.'\'');
+		$news=$news->fetch(PDO::FETCH_ASSOC);
+		return $news;
+	}
 };
 
 /* test */
@@ -69,4 +75,6 @@ $result=$obj->getComments(2);
 $result=$obj->getNewsAuthor(1);
 $result=$obj->getNewsFilter(Array('Sociedade','Desporto'),'2010-10-03T00:00:00','2012-10-03T20:00:00');
 $result=$obj->getNewsTags(1);
+$result=$obj->getNewsByUrl('time-to-say-danke');
+print_r($result);
 ?>
