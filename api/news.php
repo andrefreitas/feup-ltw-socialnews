@@ -1,18 +1,64 @@
 <?php
 	chdir('..');
 	include_once  'datacontroller.php';
-	/*
-	if(is_null($_GET["start_date"])) echo ' nulo';
-	if(checkParams($_GET["start_date"],$_GET["end_date"],$_GET["tags"],$error)){
-		$errorArray=Array('result'=>'error','reason'=>$error,'code'=>'2');
+
+	// Handle Errors
+	$allErrors=Array("Missing start_date","Missing end_date", "Missing tags","start_date can't be greater or equal than end_date","start_date invalid format","end_date invalid format");
+	$error=NULL;
+	$errorcode=NULL;
+	if(empty($_GET['start_date'])){
+		$error=$allErrors[0];
+		$errorcode=1;
+	} else if(empty($_GET['end_date'])){
+		$error=$allErrors[1];
+		$errorcode=2;
+	} else if (empty($_GET['tags'])){
+		$error=$allErrors[2];
+		$errorcode=3;
+	} else if(!empty($_GET['start_date']) and !empty($_GET['end_date'])){
+		// Check dates format and interval between
+		$wrongFormat=false;
+		try{
+			$d1=new DateTime($_GET['start_date']);
+		}
+		catch(Exception $e){
+  			$error=$allErrors[4];
+		    $errorcode=5;
+			$wrongFormat=true;
+  		}
+		
+		try{
+			$d2=new DateTime($_GET['end_date']);
+		}
+		catch(Exception $e){
+  			$error=$allErrors[5];
+		    $errorcode=6;
+			$wrongFormat=true;
+  		}
+		
+		if($wrongFormat==false and $d2<=$d1){
+			$error=$allErrors[3];
+			$errorcode=4;
+		}
+	}
+
+	
+	// If error found
+	if($error!=NULL){
+		$errorArray=Array("result"=>'error',"reason"=>$error,"code"=>$errorcode);
 		$errorJson=json_encode($errorArray);
 		echo $errorJson;
-	}
+	} else {
+	
+	// Else
+	
 	
 	$start_date=$_GET["start_date"];
 	$end_date=$_GET["end_date"];
-	$tags=split(' ',$_GET["tags"]);
-	print_r($tags); */
+	$tags=explode(' ',$_GET["tags"]);
 	
+	
+	
+	}
 	
 ?>
