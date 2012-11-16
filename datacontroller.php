@@ -1,7 +1,6 @@
 <?php
 
-require("./config.php");
- 
+include_once './config.php';
 class DataController{
 	
 	protected $dataBase;
@@ -67,9 +66,9 @@ class DataController{
 	}
 };
 
-/* test */
-$obj=new DataController($database);
+$db=new DataController($database);
 
+/* test 
 $result=$obj->getNews();
 $result=$obj->getComments(2);
 $result=$obj->getNewsAuthor(1);
@@ -77,4 +76,5 @@ $result=$obj->getNewsFilter(Array('Sociedade','Desporto'),'2010-10-03T00:00:00',
 $result=$obj->getNewsTags(1);
 $result=$obj->getNewsByUrl('time-to-say-danke');
 print_r($result);
+*/
 ?>
