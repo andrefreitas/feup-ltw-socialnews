@@ -28,16 +28,45 @@ class DataController{
 	
 	public function getNewsFilter($tags,$start_date,$end_date){
 		// First fetch all news ids
-		//$news_ids=$this->dataBase->query('SELECT id FROM news where date>=');
-		//$news_ids=$news_ids->fetchAll(PDO::FETCH_ASSOC);;
-		// Check for every new
+		$news=$this->dataBase->query('SELECT * FROM news WHERE datetime(datePosted)>=datetime(\''.$start_date.'\') and datetime(datePosted)<=datetime(\''.$end_date.'\')');
+		$news=$news->fetchAll(PDO::FETCH_ASSOC);
+		//print_r($news);
+		// If the filter is empty return all
+		if(empty($tags)) return $news;
+		
+		// Check tags for every news
+		$filteredNews=Array();
+		foreach($news as $row){
+			$newsTags=$this->getNewsTags($row['id']);
+			// Intersect tags given and news tags arrays
+			$commonTags=array_intersect($newsTags, $tags);
+			if(!empty($commonTags)) $filteredNews[]=$row;
+		}
+		return $filteredNews;
 	}
 	
+	public function getNewsTags($newsId){
+		$tagsIds=$this->dataBase->query('SELECT tagId FROM newsTag where newsId='.$newsId);
+		$tagsIds=$tagsIds->fetchAll(PDO::FETCH_ASSOC);
+		
+		$tags=Array();
+		foreach($tagsIds as $row){
+			$tagsId=$row['tagId'];
+			$tagName=$this->dataBase->query('SELECT name FROM tag where id='.$tagsId);
+			$tagName=$tagName->fetch(PDO::FETCH_ASSOC);
+			$tagName=$tagName['name'];
+			$tags[]=$tagName;
+		}
+		return $tags;
+	}
 };
 
+/* test */
 $obj=new DataController('server.db');
+
 $result=$obj->getNews();
 $result=$obj->getComments(2);
 $result=$obj->getNewsAuthor(1);
-$result=$obj->getNewsFilter(1,1,1);
+$result=$obj->getNewsFilter(Array('Sociedade','Desporto'),'2010-10-03T00:00:00','2012-10-03T20:00:00');
+$result=$obj->getNewsTags(1);
 ?>
