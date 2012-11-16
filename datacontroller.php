@@ -64,9 +64,15 @@ class DataController{
 		$news=$news->fetch(PDO::FETCH_ASSOC);
 		return $news;
 	}
+	
+	public function getServerName(){
+		$servername=$this->dataBase->query('SELECT name from serverinfo');
+		$servername=$servername->fetch(PDO::FETCH_ASSOC);
+		return $servername['name'];
+	}
 };
 
-$db=new DataController($database);
+$data=new DataController($_database);
 
 /* test 
 $result=$obj->getNews();

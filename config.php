@@ -1,5 +1,5 @@
 <?php
 	define('DBPATH','data/');
-	$database='server.db';
-	$url='http://paginas.fe.up.pt/~ei10036/socialus';
+	$_database='server.db';
+	$_siteurl='http://paginas.fe.up.pt/~ei10036/socialus';
 ?>

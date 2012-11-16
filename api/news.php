@@ -43,22 +43,33 @@
 	}
 
 	
-	// If error found
+	// If error found -->
 	if($error!=NULL){
 		$errorArray=Array("result"=>'error',"reason"=>$error,"code"=>$errorcode);
 		$errorJson=json_encode($errorArray);
 		echo $errorJson;
 	} else {
 	
-	// Else
-	
+	// Else -->
 	
 	$start_date=$_GET["start_date"];
 	$end_date=$_GET["end_date"];
 	$tags=explode(' ',$_GET["tags"]);
+	$servername=$data->getServerName();
 	
+	$newsJson=Array("result"=>"success","serve_name"=>$servername,"data"=>Array());
+	// Handle news
+	$news=$data->getNewsFilter($tags,$start_date,$end_date);
+	foreach($news as $row){
+		$newsurl=$_siteurl."/article.php?url=".$row['url'];
+		$author=$data->getNewsAuthor($row['id']);
+		$author=$author['name'];
+		$tags=$data->getNewsTags($row['id']);
+		$newsJson['data'][]=Array("id"=>$row["id"],"title"=>$row["title"],"date"=>$row["datePosted"],"text"=>$row["content"],"posted_by"=>$author,"url"=>$newsurl,"tags"=>$tags);
+	}
+	echo json_encode($newsJson);
 	
-	
+
 	}
 	
 ?>
