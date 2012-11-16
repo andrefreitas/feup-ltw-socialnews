@@ -58,6 +58,7 @@ create table news(
 	content text,
 	userId integer,
 	categoryId integer,
+	url text,
 	foreign key(userId) references user(id)
 );
 

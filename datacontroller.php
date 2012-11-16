@@ -1,7 +1,7 @@
 <?php
 
-define('DBPATH','data/');
-
+require("./config.php");
+ 
 class DataController{
 	
 	protected $dataBase;
@@ -62,7 +62,7 @@ class DataController{
 };
 
 /* test */
-$obj=new DataController('server.db');
+$obj=new DataController($database);
 
 $result=$obj->getNews();
 $result=$obj->getComments(2);
