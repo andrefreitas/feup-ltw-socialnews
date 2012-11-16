@@ -14,6 +14,11 @@ class DataController{
 		return $this->dataBase->query('SELECT * FROM news')->fetchAll(PDO::FETCH_ASSOC);
 	}
 	
+	public function getLatestNews(){
+		return $this->dataBase->query('SELECT * FROM latestNews')->fetchAll(PDO::FETCH_ASSOC);
+	}
+	
+	
 	public function getComments($newsId){
 		return $this->dataBase->query('SELECT * FROM comment where newsid='.$newsId)->fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -70,17 +75,27 @@ class DataController{
 		$servername=$servername->fetch(PDO::FETCH_ASSOC);
 		return $servername['name'];
 	}
+	
+	public function getCategoryNews($category){
+		$categoryid=$this->dataBase->query('SELECT id from category where name=\''.$category.'\'');
+		$categoryid=$categoryid->fetch(PDO::FETCH_ASSOC);
+		$categoryid=$categoryid['id'];
+		$news=$this->dataBase->query('SELECT * from news where categoryid='.$categoryid);
+		
+		$news=$news->fetchAll(PDO::FETCH_ASSOC);
+		return $news;
+	}
+	
+	public function getActiveCategories(){
+		$categories=$this->dataBase->query('SELECT name from activecategories');
+		$categories=$categories->fetchAll(PDO::FETCH_ASSOC);
+		$aux=Array();
+		foreach($categories as $row){
+			$aux[]=$row['name'];
+		}
+		return $aux;
+	}
 };
 
 $data=new DataController($_database);
-
-/* test 
-$result=$obj->getNews();
-$result=$obj->getComments(2);
-$result=$obj->getNewsAuthor(1);
-$result=$obj->getNewsFilter(Array('Sociedade','Desporto'),'2010-10-03T00:00:00','2012-10-03T20:00:00');
-$result=$obj->getNewsTags(1);
-$result=$obj->getNewsByUrl('time-to-say-danke');
-print_r($result);
-*/
 ?>
