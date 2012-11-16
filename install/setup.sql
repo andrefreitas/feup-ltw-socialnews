@@ -59,7 +59,8 @@ create table news(
 	userId integer,
 	categoryId integer,
 	url text,
-	foreign key(userId) references user(id)
+	foreign key(userId) references user(id),
+	foreign key(categoryId) references category(id)
 );
 
 
@@ -135,8 +136,14 @@ create view latestComments As
 	from comment 
 	order by date DESC, time DESC;
 
-/* List news with metrics */
+/* List categories that have posts */
+drop view if exists activeCategories;
+create view activeCategories as
+	select category.id,category.name,count(*) as total
+	from category,news
+	where category.id=news.categoryid group by category.name;
 
+/* List news with metrics */
 drop view if exists topNews;
 create view topNews As
 	select id , pageviews*0.3+ searchs*0.3 + comments*0.4 as Score
