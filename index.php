@@ -2,13 +2,16 @@
 	include_once  'datacontroller.php';
 	$categories=$data->getActiveCategories();
 	$latestnews=$data->getLatestNews();
-	$latestnewsMaxTitleLen=45;
+	$topnews=$data->getTopNews();
+	$latestnewsMaxTitleLen=42;
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
     	<title>Socialus - social news for everyone</title>
         <link href="css/template.css" rel="stylesheet" type="text/css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script> 
+        <script src="js/rtupdates.js"></script> 
         <meta charset="utf-8">
         <link href="imgs/favicon.ico" rel="icon" type="image/x-icon" />
     </head>
@@ -56,6 +59,17 @@
 							}
 							?>
                         </ul>
+                    </div>
+                    
+                    <div class="mostPopular">
+                    	<h3>Most popular</h3>
+                        <?php
+							for($i=0; $i<sizeof($topnews) and $i<4;$i++){
+								echo "<div class=\"entry\">\n";
+								echo "<img src=\"".$_thumbspath.$topnews[$i]['thumbnail']."\"/>";
+								echo "\n</div>";
+							} 
+						?>
                     </div>
                 </div>
                 <div class="sidebar">

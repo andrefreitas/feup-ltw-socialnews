@@ -14,6 +14,10 @@ class DataController{
 		return $this->dataBase->query('SELECT * FROM news')->fetchAll(PDO::FETCH_ASSOC);
 	}
 	
+	public function getTopNews(){
+		return $this->dataBase->query('SELECT * FROM topnews')->fetchAll(PDO::FETCH_ASSOC);
+	}
+	
 	public function getLatestNews(){
 		return $this->dataBase->query('SELECT * FROM latestNews')->fetchAll(PDO::FETCH_ASSOC);
 	}

@@ -146,8 +146,9 @@ create view activeCategories as
 /* List news with metrics */
 drop view if exists topNews;
 create view topNews As
-	select id , pageviews*0.3+ searchs*0.3 + comments*0.4 as Score
-	from newsMetrics
+	select * ,pageviews*0.3+ searchs*0.3 + comments*0.4 as Score
+	from newsMetrics,news
+	where newsMetrics.newsId=news.id
 	order by Score DESC;
 
 
