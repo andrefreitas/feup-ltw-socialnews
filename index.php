@@ -1,14 +1,14 @@
 <?php
-	include_once  'datacontroller.php';
+	include_once  'dataprint.php';
 	$categories=$data->getActiveCategories();
 	$latestnews=$data->getLatestNews();
 	$topnews=$data->getTopNews();
-	$latestnewsMaxTitleLen=42;
+	
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-    	<title>Socialus - social news for everyone</title>
+    	<title>Socialus social news for everyone</title>
         <link href="css/template.css" rel="stylesheet" type="text/css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script> 
         <script src="js/rtupdates.js"></script> 
@@ -35,10 +35,7 @@
         	<div class="container">
                 <ul>
                     <li><a href="#">Home</a></li>
-					<?php foreach($categories as $row){
-						echo "<li><a href=\"category.php?name=".$row."\">".$row."</a></li>\n";
-					}
-					?>
+					<?php printCategories($categories); ?>
                  </ul>
             </div>
         </div>
@@ -50,13 +47,7 @@
                     	<h3>Latest News</h3>
                         <ul>
                         	<?php
-							for($i=0; $i<sizeof($latestnews) and $i<10;$i++){
-								$title=$latestnews[$i]['title'];
-								if(strlen($title)>$latestnewsMaxTitleLen){
-									$title=substr($title,0,$latestnewsMaxTitleLen-3).'...';
-								}
-								echo " <li><a href=\"#\">".$title."</a><span class=\"time\">2m</span></li>";
-							}
+							printLatestNews($latestnews);
 							?>
                         </ul>
                     </div>
@@ -64,12 +55,9 @@
                     <div class="mostPopular">
                     	<h3>Most popular</h3>
                         <?php
-							for($i=0; $i<sizeof($topnews) and $i<4;$i++){
-								echo "<div class=\"entry\">\n";
-								echo "<img src=\"".$_thumbspath.$topnews[$i]['thumbnail']."\"/>";
-								echo "\n</div>";
-							} 
+							printTopNews($topnews);
 						?>
+                        
                     </div>
                 </div>
                 <div class="sidebar">

@@ -1,6 +1,6 @@
 <?php
 	chdir('..');
-	include_once  'datacontroller.php';
+	include  'datacontroller.php';
 
 	// Handle Errors
 	$allErrors=Array("Missing start_date","Missing end_date", "Missing tags","start_date can't be greater or equal than end_date","start_date invalid format","end_date invalid format");

@@ -99,6 +99,16 @@ class DataController{
 		}
 		return $aux;
 	}
+	
+	public function getNewsCategory($newsid){
+		$catid=$this->dataBase->query('SELECT categoryid from news where id='.$newsid);
+		$catid=$catid->fetch(PDO::FETCH_ASSOC);
+		$catid=$catid['categoryId'];
+
+		$category=$this->dataBase->query('SELECT name from category where id='.$catid);
+		$category=$category->fetch(PDO::FETCH_ASSOC);
+		return $category['name'];
+	}
 };
 
 $data=new DataController($_database);
