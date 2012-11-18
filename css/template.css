@@ -478,4 +478,28 @@ box-shadow: 6px 3px 6px rgba(0,0,0,0.1);
 .loggedin{
 	text-align:center;
 	margin-top:5px;
+	color:#fff;
+}
+
+.loggedin ul{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+.loggedin li{
+	margin-left:10px;
+}
+.loggedin ul a:link{
+	text-decoration:none;
+	font-size:14px;
+}
+
+.loggedin ul a:hover{
+	text-decoration:underline;
+}
+
+.loggedin .article{
+	background:url(../imgs/createarticle.png) no-repeat;
+	background-position: 33px 20px;
+	
 }

@@ -77,11 +77,14 @@
                 <?php 
 				
 					if(isset($_POST['title']) and isset($_POST['content']) and isset($_POST['category']) and isset($_POST['tags'])){
-						$data->insertNews(1,$_POST['title'],$_POST['content'],$_POST['tags'],$_POST['category']);
+						$data->insertNews($_SESSION['user']['id'],$_POST['title'],$_POST['content'],$_POST['tags'],$_POST['category']);
 						echo "<h1>News created successfuly. </h1>";
 						
 					} else {
+						if(!$data->userCan($_SESSION['privilegeid'],"createNews")) echo "<h1>You can't create news</h1>";
+						else {
 				?>
+                
                 <h1>Create a new article</h1>
                 Please fill the following fields with data
          
@@ -102,7 +105,7 @@
                      <input name="tags" id="mySingleField" name="tags" value="" hidden="true"> 
                      Tags:
                      <ul id="singleFieldTags"></ul>
-                	<input type="submit" class="button" >
+                	<input type="submit" class="button" value="Create Article" >
                 </form>
                 
                 <script>
@@ -128,25 +131,29 @@
                     });
 				</script>
                 
-                <?php }?>
+                <?php }}?>
                 </div>
                 <div class="sidebar">
-                  <?php echo $_SESSION['privilegeid']; ?>
-                	<div class="user">
+      <div class="user">
                     	<h3>User Area</h3>
-                          <?php 
+                        <?php 
 						if(!isset($_SESSION['user'])){ ?>
                         <form action="login.php" method="post" class="login">
                         	<input type="text" name="email" placeholder="your email" class="email"/>
-                            <input type="password" name="password" placeholder="your password" class="password"/>
+                            <input type="password" name="password" placeholder="your password" class="password"/><br/>
                             <input type="submit" class="button" value="Login"/>
                         </form>
                         <?php } else {?>
-                        	Hello 
+                        <div class="loggedin">
+                        	Hello <?php echo $_SESSION['user']['name']; ?>
+                            <ul>
+                            	<li class="article"><a href="createarticle.php">Create article</a></li>
+                            </ul>
                           <form action="logout.php" method="post">
                        
                             <input type="submit" class="button" value="Logout"/>
                         </form>
+                       </div>
                         <?php } ?>
                     </div>
                     <div class="comments">

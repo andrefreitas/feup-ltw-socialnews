@@ -16,7 +16,7 @@ function GetMonthString($n){
 
 function printCategories($categories){
 	foreach($categories as $row){
-		echo "<li><a href=\"category.php?name=".$row."\">".$row."</a></li>\n";
+		echo "<li><a href=\"#\">".$row."</a></li>\n";
 	}
 
 }
@@ -40,7 +40,7 @@ function printTopNews($topnews){
 		echo "<br/><span class=\"category\"> in ".$category."</span>";
 		echo " </div>";
 		echo " </div>";
-		echo " <div class=\"tnside\"/>";
+		echo " <div class=\"tnside\">";
 		echo "<div class=\"day\">".$day."</div>";
 		echo "<div class=\"month\">".substr($month,0,3)."</div>";
 		echo "</div>";
@@ -58,5 +58,13 @@ function printLatestNews($latestnews){
 	}
 }
 
+function loadLatestNewsTimes($latestnews){
+	echo "<script>";
+	for($i=0; $i<sizeof($latestnews) and $i<14;$i++){
+		$dateposted=$latestnews[$i]['datePosted'];
+		echo " latestNewsTimes.push(\"".$dateposted."\");";
+	}
+	echo "</script>";
+}
 
 ?>

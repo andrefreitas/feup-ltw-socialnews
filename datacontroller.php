@@ -210,7 +210,12 @@ class DataController{
 	}
 	
 	public function userCan($privilegeid,$action){
-		
+		$actionid=$this->dataBase->query('select id from useraction where name=\''.$action.'\'');
+		$actionid=$actionid->fetch(PDO::FETCH_ASSOC);
+		$actionid=$actionid['id'];
+		$can=$this->dataBase->query('select * from userActionPrivilege where privilegeId='.$privilegeid.' and userActionId='.$actionid);
+		$can=$can->fetch(PDO::FETCH_ASSOC);
+		return $can!=NULL;
 	}
 };
 
