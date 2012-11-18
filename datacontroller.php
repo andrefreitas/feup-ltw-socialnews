@@ -191,11 +191,28 @@ class DataController{
 			$this->dataBase->query('insert into newstag(newsId,tagId) values('.$newsid.','.$tagid.')');
 			
 		}
-		
+			
+	}
+	public function getUserPassword($email){
+		$password=$this->dataBase->query('SELECT password from user where email=\''.$email.'\'');
+		$password=$password->fetch(PDO::FETCH_ASSOC);
+		return $password['password'];
+	}
+	public function auth($email,$password){
+		$storepassword=$this->getUserPassword($email);
+		return sha1($password)==$storepassword;
+	}
+	
+	public function getUserByEmail($email){
+		$user=$this->dataBase->query('select * from user where email=\''.$email.'\'');
+		$user=$user->fetch(PDO::FETCH_ASSOC);
+		return $user;
+	}
+	
+	public function userCan($privilegeid,$action){
 		
 	}
 };
 
 $data=new DataController($_database);
-
 ?>

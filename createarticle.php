@@ -4,6 +4,10 @@
 	$categories=$data->getActiveCategories();
 	$tags=$data->getTags();
 	$cats=$data->getCategories();
+	@session_start();
+	if(!isset($_SESSION['user'])){
+		$_SESSION['privilegeid']=4;
+	}
 ?>
 
 <!DOCTYPE html>
@@ -127,8 +131,23 @@
                 <?php }?>
                 </div>
                 <div class="sidebar">
+                  <?php echo $_SESSION['privilegeid']; ?>
                 	<div class="user">
                     	<h3>User Area</h3>
+                          <?php 
+						if(!isset($_SESSION['user'])){ ?>
+                        <form action="login.php" method="post" class="login">
+                        	<input type="text" name="email" placeholder="your email" class="email"/>
+                            <input type="password" name="password" placeholder="your password" class="password"/>
+                            <input type="submit" class="button" value="Login"/>
+                        </form>
+                        <?php } else {?>
+                        	Hello 
+                          <form action="logout.php" method="post">
+                       
+                            <input type="submit" class="button" value="Logout"/>
+                        </form>
+                        <?php } ?>
                     </div>
                     <div class="comments">
                     	<h3>Comments</h3>

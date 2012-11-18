@@ -58,4 +58,5 @@ function printLatestNews($latestnews){
 	}
 }
 
+
 ?>

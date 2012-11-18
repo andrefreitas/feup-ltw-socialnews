@@ -2,7 +2,10 @@
 	include_once  'dataprint.php';
 	include_once  'datacontroller.php';
 	$categories=$data->getActiveCategories();
-	
+		@session_start();
+	if(!isset($_SESSION['user'])){
+		$_SESSION['privilegeid']=4;
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -62,8 +65,24 @@
 				</div>
                 </div>
                 <div class="sidebar">
-                	<div class="user">
+                	        	<div class="user">
                     	<h3>User Area</h3>
+                        <?php 
+						if(!isset($_SESSION['user'])){ ?>
+                        <form action="login.php" method="post" class="login">
+                        	<input type="text" name="email" placeholder="your email" class="email"/>
+                            <input type="password" name="password" placeholder="your password" class="password"/>
+                            <input type="submit" class="button" value="Login"/>
+                        </form>
+                        <?php } else {?>
+                        <div class="loggedin">
+                        	Hello <?php echo $_SESSION['user']['name']; ?>
+                          <form action="logout.php" method="post">
+                       
+                            <input type="submit" class="button" value="Logout"/>
+                        </form>
+                       </div>
+                        <?php } ?>
                     </div>
                     <div class="comments">
                     	<h3>Comments</h3>

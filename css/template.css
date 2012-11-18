@@ -212,11 +212,12 @@
 
 .user{
 	width: 200px;
-	height: 150px;
+	height: 160px;
 	background: #d1382d;
 	box-shadow: 6px 3px 6px rgba(0,0,0,0.1) inset;
 	border:solid 1px #a21a1a;
 	border-left:none;
+	color:#fff;
 }
 
 .user h3{
@@ -433,4 +434,48 @@
 }
 .article .tags ul{
 	list-style:none;
+}
+
+.login{
+	text-align:center;
+
+}
+
+.login input{
+	margin-top:10px;
+	height:25px;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+.login .email{
+
+}
+
+.login .password{
+
+}
+
+.user .button{
+	background:#bf3329;
+	color:#fff;
+	border:solid 1px #fff;
+	text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+	text-transform:uppercase;
+	padding-left:5px;
+	padding-right:5px;
+
+}
+.user .button:hover{
+	background:#d1382d;
+}
+
+	
+.user .button:active{
+box-shadow: 6px 3px 6px rgba(0,0,0,0.1);
+}
+
+.loggedin{
+	text-align:center;
+	margin-top:5px;
 }
