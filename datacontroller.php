@@ -120,7 +120,7 @@ class DataController{
 		return $aux;
 	}
 	
-		public function getCategories(){
+	public function getCategories(){
 		$cat=$this->dataBase->query('SELECT name from category');
 		$cat=$cat->fetchAll(PDO::FETCH_ASSOC);
 		$aux=Array();
@@ -129,7 +129,73 @@ class DataController{
 		}
 		return $aux;
 	}
+	
+	private function seoUrl($string) {
+		// Copyright: http://forum.codecall.net/topic/59486-php-create-seo-friendly-url-titles-slugs/#axzz2CahaTGrG
+        //Unwanted:  {UPPERCASE} ; / ? : @ & = + $ , . ! ~ * ' ( )
+        $string = strtolower($string);
+        //Strip any unwanted characters
+        $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+        //Clean multiple dashes or whitespaces
+        $string = preg_replace("/[\s-]+/", " ", $string);
+        //Convert whitespaces and underscore to dash
+        $string = preg_replace("/[\s_]/", "-", $string);
+        return $string;
+	}
+
+	public function getCategoryId($categoryname){
+		$catid=$this->dataBase->query('SELECT id from category where name=\''.$categoryname.'\'');
+		$catid=$catid->fetch(PDO::FETCH_ASSOC);
+		return $catid['id'];
+	}
+	public function tagExists($tagname){
+		$tagname=strtolower($tagname);
+		$tag=$this->dataBase->query('SELECT * from tag tag where lower(name)=\''.$tagname.'\'');
+		$tag=$tag->fetch(PDO::FETCH_ASSOC);
+		return $tag!=NULL;
+	}
+	
+	public function getTagId($tagname){
+		$tagname=strtolower($tagname);
+		$tag=$this->dataBase->query('SELECT id from tag tag where lower(name)=\''.$tagname.'\'');
+		$tag=$tag->fetch(PDO::FETCH_ASSOC);
+		return $tag['id'];
+	}
+	
+	public function insertTag($tagname){
+		$tagname=strtolower($tagname);
+		$tag=$this->dataBase->query('INSERT into tag(name) values(\''.$tagname.'\')');
+	}
+	
+	public function insertNews($authorid,$title,$content,$tagslist,$categoryname){
+		
+		$url=$this->seoUrl($title);
+		$date= new DateTime();
+		$date= $date->format('Y-m-d\TH:i:s');
+		$categoryid= $this->getCategoryId($categoryname);
+		
+		// Insert news
+		$this->dataBase->query('INSERT into news(title, url, datePosted,categoryId,userId,content) values(\''.$title.'\',\''.$url.'\',\''.$date.'\','.$categoryid.','.$authorid.',\''.$content.'\')');
+		
+		$newsid= $this->dataBase->query('select seq from sqlite_sequence where name=\'news\'');
+		$newsid=$newsid->fetch(PDO::FETCH_ASSOC);
+		$newsid=$newsid['seq'];
+		// Handle tags
+		$tagsArray=explode(",", $tagslist);
+		foreach($tagsArray as $tag){
+			if(!$this->tagExists($tag)){
+				$this->insertTag($tag);
+			}
+			$tagid=$this->getTagId($tag);
+			
+			$this->dataBase->query('insert into newstag(newsId,tagId) values('.$newsid.','.$tagid.')');
+			
+		}
+		
+		
+	}
 };
 
 $data=new DataController($_database);
+
 ?>
