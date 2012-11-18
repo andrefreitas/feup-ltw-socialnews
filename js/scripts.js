@@ -7,12 +7,15 @@ $(document).ready(function(){
 var latestNewsTimes= new Array();
 
 function updateLatestNewsTimes(){
-	var diffTimes=new Array();
-	for (i=0; i<latestNewsTimes.length; i++){
-		console.log(computeDiff(latestNewsTimes[i]));
-		console.log(latestNewsTimes[i]);
-	}
+	var latestnews=document.getElementsByClassName("latestNews")[0]
+	var ul=latestnews.getElementsByTagName("ul")[0]
+	var times=ul.getElementsByClassName("time")
 	
+	var diffTimes=new Array();
+	for (i=0; i<times.length; i++){
+		times[i].innerHTML=computeDiff(latestNewsTimes[i])
+	}
+	t=setTimeout(function(){updateLatestNewsTimes()},6000);
 }
 
 
@@ -24,21 +27,22 @@ function computeDiff(date){
 			if(today.getUTCDate()==date.getUTCDate()){
 				if(today.getHours()==date.getHours()){
 					if(today.getMinutes()==date.getMinutes()){
-						return (today.getSeconds()-date.getSeconds())+ "s ago";
+						return (today.getSeconds()-date.getSeconds())+ "s";
 					}
 					else{
-						return (today.getMinutes()-date.getMinutes())+ "m ago";
+						return (today.getMinutes()-date.getMinutes())+ "min";
 					}
 				}else{
-					return (today.getHours()-date.getHours())+ "h ago";
+					return (today.getHours()-date.getHours())+ "h";
 				}
 			}else {
-				return (today.getUTCDate()-date.getUTCDate())+ "d ago";
+				return (today.getUTCDate()-date.getUTCDate())+ "d";
 			}
 		} else {
-			return (today.getMonth()-date.getMonth())+ "M ago";
+	
+			return (today.getMonth()-date.getMonth())+ "m";
 		}
 	}else {
-		return (today.getFullYear()-date.getFullYear())+ "Y ago";
+		return (today.getFullYear()-date.getFullYear())+ "year";
 	}
 }

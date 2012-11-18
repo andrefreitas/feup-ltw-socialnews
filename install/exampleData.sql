@@ -112,7 +112,7 @@ insert into news(title, url, thumbnail, datePosted,categoryId,userId,content)
 		subject of paintings than to have their own work exhibited.");
 
 insert into news(title, url, thumbnail, datePosted,categoryId,userId,content)
-	values("Cristiano Ronaldo and Daniel Craig - A right to privacy?","a-right-to-privacy","cr7.jpg","2012-11-04T16:22:56",1,9,"Both men have their photos plastered across billboards worldwide, their pictures on television 
+	values("Cristiano Ronaldo and Daniel Craig - A right to privacy?","a-right-to-privacy","cr7.jpg","2012-11-18T01:14:56",1,9,"Both men have their photos plastered across billboards worldwide, their pictures on television 
 		commercials broadcast around the globe and their private lives played out on the internet.
 So why do the likes of Craig and Ronaldo, who make millions of dollars from their public image, believe they deserve privacy?");
 
