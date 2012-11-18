@@ -52,12 +52,12 @@
 					echo "<span class=\"info\"> Posted on ".$datetime->format('Y/m/d H:i:s')." by ".$author['name']."</span>";
 					echo "<div class=\"entry\"> ".$news['content']."</div>";
 					$tags=$data->getNewsTags($news['id']);
-					echo "<div class=\"tags\">\n<ul>";
-					echo "<h2> Tags </h2>";
-					foreach($tags as $tag){
-						echo"<li>".$tag."</li>";
-					}
-					echo "</ul>\n</div>";
+					//echo "<div class=\"tags\">\n<ul>";
+					//echo "<h2> Tags </h2>";
+					//foreach($tags as $tag){
+					//	echo"<li>".$tag."</li>";
+					//}
+					//echo "</ul>\n</div>";
 				?>
 				</div>
                 </div>

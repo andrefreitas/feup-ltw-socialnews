@@ -109,6 +109,26 @@ class DataController{
 		$category=$category->fetch(PDO::FETCH_ASSOC);
 		return $category['name'];
 	}
+	
+	public function getTags(){
+		$tags=$this->dataBase->query('SELECT name from tag');
+		$tags=$tags->fetchAll(PDO::FETCH_ASSOC);
+		$aux=Array();
+		foreach($tags as $row){
+			$aux[]=$row['name'];
+		}
+		return $aux;
+	}
+	
+		public function getCategories(){
+		$cat=$this->dataBase->query('SELECT name from category');
+		$cat=$cat->fetchAll(PDO::FETCH_ASSOC);
+		$aux=Array();
+		foreach($cat as $row){
+			$aux[]=$row['name'];
+		}
+		return $aux;
+	}
 };
 
 $data=new DataController($_database);
