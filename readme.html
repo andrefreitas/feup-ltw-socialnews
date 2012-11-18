@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+    	<title>Socialus - social news for everyone</title>
+        <link href="css/template.css" rel="stylesheet" type="text/css">
+        <meta charset="utf-8">
+        <link href="imgs/favicon.ico" rel="icon" type="image/x-icon" />
+    </head>
+    <body>
+    
+    	<div id="header">
+        	<div class="container">
+            	<div class="logoContainer">
+                	<img src="imgs/logo.png" alt="Socialus - social news for everyone" class="logo"/>
+                </div>
+                <div class="searchContainer">
+                    <form class="search-form cf">
+                        <input type="text" placeholder="Search an article here..." required>
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div id="menu">
+        	<div class="container">
+            
+            </div>
+        </div>
+        
+        <div id="main">
+        	<div class="container">
+            	<div class="news" style="padding:10px">
+				<b>Nome do Grupo: </b> T6G1<br/>
+				<b>Membros: </b> <br/>
+				André Freitas - p.andrefreitas@gmail.com<br/>
+				Arkadiusz Gorgolewski - arkadiuszgorgolewski@gmail.com<br/><br/>
+				
+				<b>Funcionalidades Implementadas: </b> <br/>
+				Criação de uma Base de Dados tendo em conta os requisitos do projeto<br/>
+				Criação de um WebServices Json em PHP que permite a pesquisa de notícias pela Data de início e fim e tags<br/>
+				Listagem das últimas notícias<br />
+				Criação de um formulário para inserir uma notícia
+				
+				<br/><br/><b>Notas: </b> <br/>
+				A base de dados foi desenhada de forma a que se possa adicionar acções nos diversos tipos de permissões. Para testar por exemplo, a funcionalidade pedida nesta primeira entrega
+				use os logins que constam em install/exampleData.sql, onde podem encontrar as password de cada utilizador nos comentários. Foi implementado o padrão MVC de modo a isolar o acesso à base de Dados
+				com a class DataController que consta em datacontroller.php. Foi usado um editor de html online "tinyeditor" que é open-source. Pode testar os webservices com : news.php?start_date=2010-11-01T01:01:01&end_date=2020-10-01T01:01:01&tags=Economia%20Feup%20Carros
+                </div>
+               
+            </div>
+        </div>
+        
+    </body>
+</html>
