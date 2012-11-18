@@ -70,29 +70,17 @@
         <div id="main">
         	<div class="container">
             	<div class="edit">
-                <h1>Create a new article</h1>
-                Please fill the following fields with data
-                <script>
-				//-------------------------------
-            // Single field
-            //-------------------------------
-		    $('#singleFieldTags').tagit({
-			    availableTags: sampleTags,
-			    // This will make Tag-it submit a single form value, as a comma-delimited field.
-			    singleField: true,
-                singleFieldNode: $('#mySingleField')
-		    });
-
-            // singleFieldTags2 is an INPUT element, rather than a UL as in the other 
-            // examples, so it automatically defaults to singleField.
-		    $('#singleFieldTags2').tagit({
-			    availableTags: sampleTags
-		    });
-				</script>
                 <?php 
 				
-					if(isset($_POST)) print_r($_POST);
+					if(isset($_POST['title']) and isset($_POST['content']) and isset($_POST['category']) and isset($_POST['tags'])){
+						$data->insertNews(1,$_POST['title'],$_POST['content'],$_POST['tags'],$_POST['category']);
+						echo "<h1>News created successfuly. </h1>";
+						
+					} else {
 				?>
+                <h1>Create a new article</h1>
+                Please fill the following fields with data
+         
                 <form action="createarticle.php" onClick="editor.post()" method="post">
                		<input type="text" name="title" class="title" placeholder="Insert title here"/><br/>
                     <textarea id="content" name="content" style="width: 400px; height: 200px"></textarea>
@@ -135,6 +123,8 @@
                         resize: {cssclass: 'resize'}
                     });
 				</script>
+                
+                <?php }?>
                 </div>
                 <div class="sidebar">
                 	<div class="user">
