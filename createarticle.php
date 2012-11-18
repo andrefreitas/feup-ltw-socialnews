@@ -14,7 +14,7 @@
 <html>
 	<head>
     	<title>Socialus social news for everyone</title>
-        
+        <meta charset="utf-8">
         <link href="css/template.css" rel="stylesheet" type="text/css">
         <link href="css/edit.css" rel="stylesheet" type="text/css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script> 
@@ -42,7 +42,7 @@
         <script src="js/tag-it.js" type="text/javascript" charset="utf-8"></script>
 		
     
-        <meta charset="utf-8">
+        
         <link href="imgs/favicon.ico" rel="icon" type="image/x-icon" />
     </head>
     <body>
