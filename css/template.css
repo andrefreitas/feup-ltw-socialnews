@@ -335,10 +335,13 @@
 }
 
 .entry{
-	
 }
 
-.entry .tnside{
+.latestnewsentry{
+	height:130px;
+}
+
+.latestnewsentry .tnside{
 	width:50px;
 	height:104px;
 	background:#d1382d;
@@ -348,7 +351,7 @@
 	
 }
 
-.entry .tnside .day{
+.latestnewsentry .tnside .day{
 	color:#fff;
 	font-size:35px;
 	font-weight:bold;
@@ -358,7 +361,7 @@
 	
 }
 
-.entry .tnside .month{
+.latestnewsentry .tnside .month{
 	color:#fff;
 	font-size:20px;
 	font-weight:bold;

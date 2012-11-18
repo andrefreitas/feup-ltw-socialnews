@@ -34,7 +34,7 @@ function printTopNews($topnews){
 		$month=$date->format('m');
 		$month=GetMonthString($month);
 								
-		echo "<div class=\"entry\">\n";
+		echo "<div class=\"latestnewsentry\">\n";
 		echo " <div class=\"thumbnail\" style=\"background: url('".$thumbnail."')\">";
 		echo "<div class=\"title\"><a href=\"article.php?url=".$news['url']."\">".$title."</a>";
 		echo "<br/><span class=\"category\"> in ".$category."</span>";
