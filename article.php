@@ -1,8 +1,7 @@
 <?php
 	include_once  'dataprint.php';
+	include_once  'datacontroller.php';
 	$categories=$data->getActiveCategories();
-	$latestnews=$data->getLatestNews();
-	$topnews=$data->getTopNews();
 	
 ?>
 <!DOCTYPE html>
@@ -44,24 +43,23 @@
         <div id="main">
         	<div class="container">
             	<div class="news">
-                	<div class="latestNews">
-                    	<h3>Latest News</h3>
-                        <ul>
-                        	<?php
-							printLatestNews($latestnews);
-							?>
-                        </ul>
-                    </div>
-                    <script>
-					updateLatestNewsTimes();
-					</script>
-                    <div class="mostPopular">
-                    	<h3>Most popular</h3>
-                        <?php
-							printTopNews($topnews);
-						?>
-                        
-                    </div>
+                <div class="article">
+				<?php
+					$news=$data->getNewsByUrl($_GET['url']);
+					echo "<h1>".$news['title']."</h1>";
+					$datetime= new DateTime($news['datePosted']);
+					$author= $data->getNewsAuthor($news['id']);
+					echo "<span class=\"info\"> Posted on ".$datetime->format('Y/m/d H:i:s')." by ".$author['name']."</span>";
+					echo "<div class=\"entry\"> ".$news['content']."</div>";
+					$tags=$data->getNewsTags($news['id']);
+					echo "<div class=\"tags\">\n<ul>";
+					echo "<h2> Tags </h2>";
+					foreach($tags as $tag){
+						echo"<li>".$tag."</li>";
+					}
+					echo "</ul>\n</div>";
+				?>
+				</div>
                 </div>
                 <div class="sidebar">
                 	<div class="user">

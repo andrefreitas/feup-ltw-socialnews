@@ -54,7 +54,7 @@ function printLatestNews($latestnews){
 		$dateposted=$latestnews[$i]['datePosted'];
 		echo "<script> latestNewsTimes.push(\"".$dateposted."\"); </script>";
 		$title=limitLen($title,42);
-		echo " <li><a href=\"#\">".$title."</a><span class=\"time\">2m</span></li>";
+		echo " <li><a href=\"article.php?url=".$latestnews[$i]['url']."\">".$title."</a><span class=\"time\">2m</span></li>";
 	}
 }
 
