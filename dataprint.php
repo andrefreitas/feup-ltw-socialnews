@@ -13,6 +13,7 @@ function GetMonthString($n){
     return date("M", $timestamp);
 }
 
+
 function printCategories($categories){
 	foreach($categories as $row){
 		echo "<li><a href=\"category.php?name=".$row."\">".$row."</a></li>\n";
@@ -50,6 +51,8 @@ function printTopNews($topnews){
 function printLatestNews($latestnews){
 	for($i=0; $i<sizeof($latestnews) and $i<14;$i++){
 		$title=$latestnews[$i]['title'];
+		$dateposted=$latestnews[$i]['datePosted'];
+		echo "<script> latestNewsTimes.push(\"".$dateposted."\"); </script>";
 		$title=limitLen($title,42);
 		echo " <li><a href=\"#\">".$title."</a><span class=\"time\">2m</span></li>";
 	}
