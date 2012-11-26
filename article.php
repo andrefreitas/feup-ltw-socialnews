@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
-	<head>
+    <head>
         <?php
-            include_once 'head.php';
             include_once  'view.php';
+
             $news=$data->getNewsByUrl($_GET['url']);
             echo "<title>".$news['title']."</title>";
+            include_once 'head.php';
+          
         ?>
+
     </head>
     <body>
-
         <?php include_once 'header.php'; ?>  
         <?php include_once 'menu.php'; ?>
-        
         <div id="main">
         	<div class="container">
             	<div class="news">

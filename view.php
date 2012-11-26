@@ -15,10 +15,10 @@ function GetMonthString($n){
 
 
 function printCategories($categories){
+	echo"\n";
 	foreach($categories as $row){
-		echo "<li><a href=\"#\">".$row."</a></li>\n";
+		echo "                    <li><a href=\"#\">".$row."</a></li>\n";
 	}
-
 }
 function printTopNews($topnews){
 	 global $data,$_thumbspath;
@@ -59,12 +59,12 @@ function printLatestNews($latestnews){
 }
 
 function loadLatestNewsTimes($latestnews){
-	echo "<script>";
+	echo "\n\t<script>\n";
 	for($i=0; $i<sizeof($latestnews) and $i<14;$i++){
 		$dateposted=$latestnews[$i]['datePosted'];
-		echo " latestNewsTimes.push(\"".$dateposted."\");";
+		echo "\t\tlatestNewsTimes.push(\"".$dateposted."\");\n";
 	}
-	echo "</script>";
+	echo "\t</script>";
 }
 
 ?>

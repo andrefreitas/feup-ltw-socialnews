@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
+    <head>
     	<title>Socialus social news for everyone</title>
         <?php
             include_once  'view.php';
@@ -12,9 +12,7 @@
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="css/tagit/jquery.tagit.css">
         <link href="css/tagit/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
-        <script>
-          var sampleTags = <?php echo json_encode($tags); ?>
-        </script>
+        <script> var sampleTags = <?php echo json_encode($tags); ?> </script>
         <script src="js/scripts.js"></script> 
         <script src="js/tiny.editor.packed.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
