@@ -1,6 +1,7 @@
 <?php
 
 include_once './config.php';
+
 class DataController{
 	
 	protected $dataBase;
