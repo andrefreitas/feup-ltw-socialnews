@@ -1,5 +1,5 @@
 <?php
-	include_once  'dataprint.php';
+	include_once  'view.php';
 	include_once  'datacontroller.php';
 	$categories=$data->getActiveCategories();
 	$tags=$data->getTags();
