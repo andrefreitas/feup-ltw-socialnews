@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    	<title>Socialus social news for everyone</title>
         <?php
             include_once 'head.php';
+            include_once  'view.php';
+            $news=$data->getNewsByUrl($_GET['url']);
+            echo "<title>".$news['title']."</title>";
         ?>
     </head>
     <body>
@@ -16,7 +18,7 @@
             	<div class="news">
                     <div class="article">
     				<?php
-    					$news=$data->getNewsByUrl($_GET['url']);
+    					
     					echo "<h1>".$news['title']."</h1>";
     					$datetime= new DateTime($news['datePosted']);
     					$author= $data->getNewsAuthor($news['id']);
@@ -33,12 +35,11 @@
                 </div>
                 <div class="sidebar">
                 	<?php include_once 'userbox.php'; ?>  
-                    <div class="comments">
-                    	<h3>Comments</h3>
-                    </div>
+                    <?php include_once 'commentsbox.php'; ?> 
                 </div>
             </div>
         </div>
         
+        <?php include_once 'footer.php'; ?>  
     </body>
 </html>

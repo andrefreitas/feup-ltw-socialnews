@@ -40,12 +40,11 @@
                 </div>
                 <div class="sidebar">
                 	<?php include_once 'userbox.php'; ?>  
-                    <div class="comments">
-                    	<h3>Comments</h3>
-                    </div>
+                    <?php include_once 'commentsbox.php'; ?> 
                 </div>
             </div>
         </div>
         
+        <?php include_once 'footer.php'; ?>  
     </body>
 </html>
