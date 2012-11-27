@@ -1,6 +1,8 @@
 // Fade in latest news
 $(document).ready(function(){
 	$('.latestNews ul').fadeIn(800);
+	if($('.alert').length != 0)
+		$('.alert').fadeIn(800);
 });
 
 // Update latest news time
@@ -131,3 +133,24 @@ function testeEditor(){
             });
             
 	    });
+
+// Validate New User Registration form
+function validateRegistration(){
+	var email=document.forms["register"]["email"].value;
+	var name=document.forms["register"]["name"].value;
+	var password=document.forms["register"]["password"].value;
+	var passwordcheck=document.forms["register"]["passwordcheck"].value;
+
+	// Check Email
+	var emailreg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+	if(emailreg.test(email) == false) {
+    	alert('Invalid email!');
+    	return false;
+   }
+
+   // Check Passwords
+	if(password!=passwordcheck){
+		alert('Passwords don\'t match!');
+		return false;
+	}
+}

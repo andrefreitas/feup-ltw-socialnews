@@ -5,8 +5,11 @@
     <form action="login.php" method="post" class="login">
         <input type="text" name="email" placeholder="your email" class="email"/>
         <input type="password" name="password" placeholder="your password" class="password"/><br/>
-        <input type="submit" class="button" value="Login"/>
+        <input type="submit" class="button" value="Login"/> 
     </form>
+    <div class="register">
+        <a href="register.php">Not registered yet? Click here</a>
+    </div>
     <?php } else {?>
     <div class="loggedin">
         Hello <?php echo $_SESSION['user']['name']; ?>

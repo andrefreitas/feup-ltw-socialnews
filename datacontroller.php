@@ -218,6 +218,32 @@ class DataController{
 		$can=$can->fetch(PDO::FETCH_ASSOC);
 		return $can!=NULL;
 	}
+
+	public function userExists($email){
+		$user=$this->dataBase->query('select id from user where email=\''.$email.'\'');
+		$user=$user->fetch(PDO::FETCH_ASSOC);
+		return $user!=NULL;
+	}
+
+	public function addUser($name,$email, $password,$privilegename){
+
+		$privilegename=strtolower($privilegename);
+		$privilegeid=$this->dataBase->query('select id from privilege where lower(name)=\''.$privilegename.'\'');
+		$privilegeid=$privilegeid->fetch(PDO::FETCH_ASSOC);
+		$privilegeid=$privilegeid['id'];
+		$password=sha1($password);
+
+		if($this->userExists($email))
+		{
+			return -1;
+		}
+		
+		$this->dataBase->query("insert into user(name, email, password,privilegeId) 
+	    						values(\"".$name."\",\"".$email."\",\"".$password."\",".$privilegeid.")");
+
+	}
+
+
 };
 
 $data=new DataController($_database);

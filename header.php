@@ -13,3 +13,9 @@
             </div>
         </div>
         
+        <?php  // Display Messages
+             if(isset($_GET['_alert'])){
+                echo "<div class=\"alert\">";
+                echo $_GET['_alert'];
+                echo "</div>\n";
+            }

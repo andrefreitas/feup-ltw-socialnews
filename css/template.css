@@ -213,7 +213,7 @@
 
 .user{
 	width: 200px;
-	height: 160px;
+	min-height: 160px;
 	background: #d1382d;
 	box-shadow: 6px 3px 6px rgba(0,0,0,0.1) inset;
 	border:solid 1px #a21a1a;
@@ -525,9 +525,13 @@ margin-top:10px;
 #footer{
 	width:100%;
 	height:45px;
+	position:fixed;
+	bottom:0;
 	background: #d1382d;
 	box-shadow: 6px 3px 6px rgba(0,0,0,0.1) inset;
 	border:solid 1px #a21a1a;
+	position:absolute;
+	bottom:0px;
 }
 
 #footer .container{
@@ -551,3 +555,64 @@ margin-top:10px;
 	float:right;
 }
 
+html, body {
+	height: 100%;
+}
+
+.alert{
+	padding:20px;
+	min-width:100px;
+	background:#fff;
+	border: solid 10px #d1382d;
+	text-align:center;
+	position:absolute;
+	top:35px;
+	right:10%;
+	box-shadow: 6px 3px 6px rgba(0,0,0,0.1) inset;
+	border-radius:5px;
+	display:none
+}
+
+.box{
+	padding:20px;
+}
+
+.box h1{
+	color:#d1382d;
+	text-transform:uppercase;
+	font-size:15px;
+	font-weight:bold;
+}
+
+.box form input{
+	height:30px;
+	padding-left:5px;
+	font-size:15px;
+	margin-top:15px;
+	width:200px;
+}
+
+.box .button{
+	width:142px;
+	height:34px;
+	border-radius:4px;
+	background:#d1382d;
+	color:#fff;
+	border:none;
+	margin-top:10px;
+	font-size:14px;
+	text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+	font-weight:bold;
+	text-transform:uppercase;
+	box-shadow: 0 1px 5px rgba(0,0,0,.4) inset;
+}
+.register{
+	font-size:12px;
+	text-align:center;
+	padding:10px;
+	color:#fff;
+}
+
+.register a{
+	color:#fff;
+}

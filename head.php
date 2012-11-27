@@ -3,6 +3,7 @@
 	if(!isset($_SESSION['user'])){
 		$_SESSION['privilegeid']=4;
     }
+
 ?>
 	
 	<link href="imgs/favicon.ico" rel="icon" type="image/x-icon" />
