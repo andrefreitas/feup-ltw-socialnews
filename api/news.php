@@ -1,7 +1,7 @@
 <?php
 	chdir('..');
 	include  'datacontroller.php';
-
+	header('Content-type: application/json');
 	// Handle Errors
 	$allErrors=Array("Missing start_date","Missing end_date", "Missing tags","start_date can't be greater or equal than end_date","start_date invalid format","end_date invalid format");
 	$error=NULL;

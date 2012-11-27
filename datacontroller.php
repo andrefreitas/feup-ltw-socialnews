@@ -5,10 +5,12 @@ include_once './config.php';
 class DataController{
 	
 	protected $dataBase;
+	protected $siteurl;
 	
-	public function __construct($dataBase){
+	public function __construct($dataBase,$_siteurl){
 		$dbPath='sqlite:'.DBPATH.$dataBase;
 		$this->dataBase = new PDO($dbPath);
+		$this->siteurl=$_siteurl;
 	}
 	
 	public function getNews(){
@@ -243,8 +245,60 @@ class DataController{
 
 	}
 
+	public function searchNews($keyword){
+		$keyword=strtolower($keyword);
+		$topnews=$this->getTopNews();
+
+		$newsfound=Array();
+		foreach($topnews as $row){
+				// All to lowercase
+				$content=strtolower($row['content']);
+				$title=strtolower($row['title']);
+
+				// Split in keywords array
+				$contentArray=preg_split("/[\s,]+/",$content);
+				$titleArray=preg_split("/[\s,]+/",$title);
+
+				$substringfound="NONE";
+				$foundkeyword=0;
+
+				// Check if found and fetch the substring
+				if(in_array($keyword,$titleArray)){
+					$pos=strpos($title,$keyword);
+					$startpos=$pos-15;
+					if($startpos<0) $startpos=0;
+					$len=$pos+strlen($keyword)+15 - $startpos + 1;
+					if($len>strlen($title)) $len=strlen($keyword);
+					//echo substr($title,$startpos,$len);
+					//echo"<br>";
+					$substringfound=substr($title,$startpos,$len);
+					$foundkeyword=1;
+				}
+				else if(in_array($keyword,$contentArray)){
+					$pos=strpos($content,$keyword);
+					$startpos=$pos-15;
+					if($startpos<0) $startpos=0;
+					$len=$pos+strlen($keyword)+15 - $startpos + 1;
+					if($len>strlen($content)) $len=strlen($keyword);
+					//echo substr($content,$startpos,$len);
+					//echo"<br>";
+					$substringfound=substr($content,$startpos,$len);
+					$foundkeyword=1;
+				}
+
+				// If found put in the result
+				if($foundkeyword){
+					$found=Array();
+					$found['url']=$this->siteurl."/article.php?url=".$row['url'];
+					$found['title']=$row['title'];
+					$found['excerpt']=$substringfound;
+					$newsfound[]=$found;
+				}
+		}
+		return $newsfound;
+	}
 
 };
 
-$data=new DataController($_database);
+$data=new DataController($_database,$_siteurl);
 ?>
