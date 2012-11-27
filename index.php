@@ -42,9 +42,10 @@
                 	<?php include_once 'userbox.php'; ?>  
                     <?php include_once 'commentsbox.php'; ?> 
                 </div>
+
             </div>
         </div>
-        
-        <?php include_once 'footer.php'; ?>  
+         <?php include_once 'footer.php'; ?>  
+       
     </body>
 </html>
