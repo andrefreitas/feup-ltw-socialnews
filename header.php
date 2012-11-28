@@ -6,9 +6,13 @@
                 </div>
                 <div class="searchContainer">
                     <form class="search-form cf">
-                        <input type="text" placeholder="Search an article here..." required>
+                        <input type="text" name="word" class="word" placeholder="Search an article here..."  required>
                         <button type="submit">Search</button>
                     </form>
+                    <div class="searchresults">
+                        <ul>sddsddsd
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

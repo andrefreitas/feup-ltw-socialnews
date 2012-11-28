@@ -530,7 +530,7 @@ margin-top:10px;
 	background: #d1382d;
 	box-shadow: 6px 3px 6px rgba(0,0,0,0.1) inset;
 	border:solid 1px #a21a1a;
-	position:absolute;
+	position:fixed;
 	bottom:0px;
 }
 
@@ -615,4 +615,17 @@ html, body {
 
 .register a{
 	color:#fff;
+}
+
+.searchresults{
+	position:absolute;
+	width:350px;
+	height:100;
+	margin-top:5px;
+	padding:10px;
+	top:20;
+	border:solid 1px #bcbcbc;
+	background:#fff;
+	border-radius: 3px;
+	display:none;     
 }
