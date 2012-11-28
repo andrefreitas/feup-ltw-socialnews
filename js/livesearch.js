@@ -14,8 +14,10 @@
   			function(data) 
   			{
     			console.log(data.results);
-    			$('.searchresults').fadeIn(800);
+    			
     			putResults(data.data);
+    			if(data.results==0) $('.searchresults').fadeOut(200);
+    			else $('.searchresults').fadeIn(800);
   			}
   			);
 
@@ -32,7 +34,8 @@ function putResults(data){
 	ulList.innerHTML="";
 	for (var i in data) {
 		var item=document.createElement('li');
-		item.innerHTML=data[i].title;
+		item.innerHTML="<a href=\""+data[i].url+"\">"+data[i].title+"</a><br>";
+		item.innerHTML=item.innerHTML+"<span class=\"excerpt\">..."+data[i].excerpt+"...</span>";
 		ulList.appendChild(item);
 	}
 }

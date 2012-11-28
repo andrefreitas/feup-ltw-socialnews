@@ -628,4 +628,33 @@ html, body {
 	background:#fff;
 	border-radius: 3px;
 	display:none;     
+	font-size:13px;
+}
+
+.searchresults ul{
+	list-style: none;
+}
+
+.searchresults li{
+	padding-top:10px;
+	padding-bottom:10px;
+	border-bottom:dashed 1px #cccccc;
+}
+
+.searchresults li a:link,.searchresults li a:visited{
+		color:#d1382d;
+	text-decoration: none;
+}
+
+.searchresults li a:hover{
+	color:#000;
+	text-decoration: none;
+}
+
+.searchresults ul>li:last-child{
+	border-bottom:none;
+}
+
+.searchresults li .excerpt{
+	font-style:italic
 }
