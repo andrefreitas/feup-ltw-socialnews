@@ -705,3 +705,65 @@ html, body {
 .searchresults li .excerpt{
 	font-style:italic
 }
+
+/* List users */
+.userrow{
+	padding:6px 10px 6px 10px;
+	margin-bottom:10px;
+	width:95%;
+	border:solid 1px #cccccc;
+	font-size:14px;
+}
+
+.gray {
+	background-color:#efefef;
+	
+
+}
+.userlist{
+	margin-top:15px;
+}
+
+.rname{
+	width:10px;
+}
+
+.remail{
+	margin-left:40px;
+}
+
+.redit{
+	float:right;
+	background:url(../imgs/edit.png) no-repeat;
+	padding-left:20px;
+}
+
+.redit a:link,.redit a:visited{
+	color:#333333;
+	text-decoration:none;
+}
+
+.redit a:hover{
+	color:#d1382d;
+	text-decoration:underline;
+}
+
+.rrole{
+	font-size:12px;
+	color:#fff;
+	margin-left:5px;
+	border-radius:3px;
+	padding:0px 3px 0px 3px;
+}
+
+.editortag {
+	background:#d09b1b;
+}
+
+.usertag{
+		background:#333333;
+}
+
+.admintag{
+	background:#d1382d;
+}

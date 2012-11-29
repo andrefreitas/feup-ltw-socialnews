@@ -67,4 +67,22 @@ function loadLatestNewsTimes($latestnews){
 	echo "\t</script>";
 }
 
+
+function printUsers($users){
+	global $data;
+	$i=0;
+	foreach($users as $user){
+		$i++;
+		$role=$data->getPrivilegeName($user['privilegeId']);
+		echo "<div class=\"userrow "; if($i%2==0) echo " gray"; echo "\">";
+		echo "<span class='rname'>".$user['name']."</span>";
+		echo "<span class='rrole ";
+		echo $role."tag"; 
+		echo "'>".$role."</span>";
+		echo "<span class='remail'>".$user['email']."</span>";
+		echo "<span class='redit'> <a href='edituser.php?id=".$user['id']."'>Edit User</a></span>";
+		echo "</div>\n";
+	}
+}
+
 ?>

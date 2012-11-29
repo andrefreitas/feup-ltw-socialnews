@@ -16,6 +16,11 @@ class DataController{
 	public function getNews(){
 		return $this->dataBase->query('SELECT * FROM news')->fetchAll(PDO::FETCH_ASSOC);
 	}
+
+	public function getUsers(){
+		$users=$this->dataBase->query('SELECT * FROM user');
+		return $users->fetchAll(PDO::FETCH_ASSOC);
+	}
 	
 	public function getTopNews(){
 		return $this->dataBase->query('SELECT * FROM topnews')->fetchAll(PDO::FETCH_ASSOC);
@@ -296,6 +301,12 @@ class DataController{
 				}
 		}
 		return $newsfound;
+	}
+
+	function getPrivilegeName($privilegeid){
+		$privilege=$this->dataBase->query('select name from privilege where id='.$privilegeid);
+		$privilege=$privilege->fetch(PDO::FETCH_ASSOC);
+		return $privilege['name'];
 	}
 
 };
