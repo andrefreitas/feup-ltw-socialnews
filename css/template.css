@@ -219,6 +219,7 @@
 	border:solid 1px #a21a1a;
 	border-left:none;
 	color:#fff;
+	padding-bottom:20px;
 }
 
 .user h3{
@@ -489,14 +490,24 @@ box-shadow: 6px 3px 6px rgba(0,0,0,0.1);
 	margin:0px;
 	padding:0px;
 	list-style:none;
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-left:30px;
+
 }
 .loggedin li{
-	margin-left:10px;
+	text-align:left;
+
+
 }
-.loggedin ul a:link,.loggedin ul a:visited{
+.loggedin li a:link,.loggedin li a:visited{
 	text-decoration:none;
 	font-size:14px;
+	padding-left: 25px;
 	color:#fff;
+
+
+}
 }
 
 .loggedin ul a:hover{
@@ -505,7 +516,43 @@ box-shadow: 6px 3px 6px rgba(0,0,0,0.1);
 
 .loggedin .article{
 	background:url(../imgs/createarticle.png) no-repeat;
-	background-position: 33px 20px;
+	padding:0;
+	
+}
+
+.loggedin .users{
+	background:url(../imgs/manageusers.png) no-repeat;
+	padding:0;
+	
+}
+
+.loggedin .myprofile{
+	background:url(../imgs/myprofile.png) no-repeat;
+	padding:0;
+	
+}
+
+.loggedin .favoritenews{
+	background:url(../imgs/favoritenews.png) no-repeat;
+	padding:0;
+	
+}
+
+.loggedin .mynews{
+	background:url(../imgs/mynews.png) no-repeat;
+	padding:0;
+	
+}
+
+.loggedin .managenews{
+	background:url(../imgs/managenews.png) no-repeat;
+	padding:0;
+	
+}
+
+.loggedin .remoteservers{
+	background:url(../imgs/remoteservers.png) no-repeat;
+	padding:0;
 	
 }
 

@@ -10,7 +10,7 @@
                         <button type="submit">Search</button>
                     </form>
                     <div class="searchresults">
-                        <ul>sddsddsd
+                        <ul>
                         </ul>
                     </div>
                 </div>
