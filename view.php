@@ -81,7 +81,9 @@ function printUsers($users){
 		echo "'>".$role."</span>";
 		//echo "<span class='remail'>".$user['email']."</span>";
 		echo "<span class='redit'> <a href='#'>Edit User</a></span>";
-		echo "<span class='deleteuser' onclick=\"deleteUser(1)\"> <a href='#'>Delete</a></span>";
+		echo "<span class='deleteuser' onclick=\"deleteUser";
+		echo "(".$user['id'].",this)"; 
+		echo "\"> <a href='#'>Delete</a></span>";
 		echo "</div>\n";
 		echo"<div class='edituser'>";
 		?>
@@ -93,11 +95,13 @@ function printUsers($users){
 			<?php 
 				$privileges=$data->getPrivileges();
 				foreach($privileges as $row){
-					echo "<option ";
-					if($row==$role) echo "selected";
-					echo ">";
-					echo $row;
-					echo "</option>\n";
+					if($row!="guest"){
+						echo "<option ";
+						if($row==$role) echo "selected";
+						echo ">";
+						echo $row;
+						echo "</option>\n";
+					}
 				}
 			?>
 			</select>

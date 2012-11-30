@@ -319,6 +319,10 @@ class DataController{
 		return $aux;
 	}
 
+	function deleteUserById($id){
+		$this->dataBase->query('delete from user where id='.$id);
+	}
+
 };
 
 $data=new DataController($_database,$_siteurl);

@@ -156,9 +156,22 @@ function validateRegistration(){
 }
 
 
-function deleteUser(id){
+function deleteUser(id,obj){
 	var answer =confirm("Do you really want to delete this user??");
-	this.innerHTML="tteeee";
-	console.log(answer);
 
+	if(answer==true){
+		// Remove from DOM
+		var container=obj.parentNode;
+		var containerParent=container.parentNode;
+		var editbox=container.nextSibling.nextSibling
+		containerParent.removeChild(container);
+		containerParent.removeChild(editbox);
+
+		// Remove from Database
+		var xmlHttp = null;
+	    xmlHttp = new XMLHttpRequest();
+	    xmlHttp.open( "GET", "api/deleteuser.php?apikey=jabana123&userid="+id, false );
+	    xmlHttp.send( null );
+	    return xmlHttp.responseText;
+	} 
 }
