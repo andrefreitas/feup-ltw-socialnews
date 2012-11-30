@@ -309,6 +309,16 @@ class DataController{
 		return $privilege['name'];
 	}
 
+	function getPrivileges(){
+		$privileges=$this->dataBase->query('select name from privilege');
+		$privileges=$privileges->fetchAll(PDO::FETCH_ASSOC);
+		$aux=Array();
+		foreach($privileges as $row){
+			$aux[]=$row['name'];
+		}
+		return $aux;
+	}
+
 };
 
 $data=new DataController($_database,$_siteurl);

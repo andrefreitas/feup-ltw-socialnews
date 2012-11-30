@@ -31,6 +31,19 @@
             </div>
 
         </div>
+         <script>
+        $(".redit").click(function () {
+            $(".edituser").fadeOut(2);
+            $useredit=$(this).parent().next();
+            if ($useredit.is(":hidden")) {
+            $useredit.slideDown();
+            } else {
+            $useredit.slideUp();
+            }
+        }); 
+
+        </script>
+
         <?php include_once 'footer.php'; ?>  
     </body>
 </html>

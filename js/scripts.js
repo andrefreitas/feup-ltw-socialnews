@@ -3,7 +3,10 @@ $(document).ready(function(){
 	$('.latestNews ul').fadeIn(800);
 	if($('.alert').length != 0)
 		$('.alert').fadeIn(800);
+
+
 });
+
 
 // Update latest news time
 var latestNewsTimes= new Array();
@@ -20,6 +23,7 @@ function updateLatestNewsTimes(){
 	t=setTimeout(function(){updateLatestNewsTimes()},6000);
 }
 
+// Compute date diff
 
 function computeDiff(date){
 	date=new Date(date);
@@ -49,11 +53,7 @@ function computeDiff(date){
 	}
 }
 
-
-function testeEditor(){
-	console.log("este");
-}
-
+// Write tags and complete
  $(function(){
             
 
@@ -154,3 +154,5 @@ function validateRegistration(){
 		return false;
 	}
 }
+
+

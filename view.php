@@ -79,9 +79,35 @@ function printUsers($users){
 		echo "<span class='rrole ";
 		echo $role."tag"; 
 		echo "'>".$role."</span>";
-		echo "<span class='remail'>".$user['email']."</span>";
-		echo "<span class='redit'> <a href='edituser.php?id=".$user['id']."'>Edit User</a></span>";
+		//echo "<span class='remail'>".$user['email']."</span>";
+		echo "<span class='redit'> <a href='#'>Edit User</a></span>";
+		echo "<span class='deleteuser'> <a href='#'>Delete</a></span>";
 		echo "</div>\n";
+		echo"<div class='edituser'>";
+		?>
+		<form>
+			Name <input type="text" name="name" class="name" required="required" value="<?php echo $user['name']?>">
+			Email <input type="text" name="email" class="email" required="required" value="<?php echo $user['email']?>">
+			Role 
+			<select>
+			<?php 
+				$privileges=$data->getPrivileges();
+				foreach($privileges as $row){
+					echo "<option ";
+					if($row==$role) echo "selected";
+					echo ">";
+					echo $row;
+					echo "</option>\n";
+				}
+			?>
+			</select>
+			<br/>
+			Password <input type="password" name="password" class="password" required="required" placeholder="Leave empty to keep">
+			Confirm Password <input type="password" name="password2" class="password" required="required" placeholder="Leave empty to keep">
+			<button type="button">Save Changes</button>
+		</form>
+		<?php
+		echo "</div>";
 	}
 }
 

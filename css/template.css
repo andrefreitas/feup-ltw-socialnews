@@ -709,10 +709,17 @@ html, body {
 /* List users */
 .userrow{
 	padding:6px 10px 6px 10px;
-	margin-bottom:10px;
-	width:95%;
+	width:628px;
 	border:solid 1px #cccccc;
 	font-size:14px;
+	margin-top:10px;
+}
+
+
+/* List users */
+.userrow:hover{
+	border:solid 1px #d1382d;
+	background:#ffc1bd;
 }
 
 .gray {
@@ -766,4 +773,79 @@ html, body {
 
 .admintag{
 	background:#d1382d;
+}
+
+.edituser{
+	width:628px;
+	padding:0px 10px 10px 10px;
+	background: #f5f5f5;
+	border:dashed 1px #cccccc;
+	border-top:none;
+	display:none;
+	font-size:14px;
+
+}
+
+
+.edituser form{
+	margin:0;
+	padding:0;
+}
+
+.edituser .name {
+	height:20px;
+	width:150px;
+	margin-right:10px;
+	font-size:14px;
+}
+
+.edituser .email{
+	height:20px;
+	width:200px;
+	margin-right:10px;
+	font-size:14px;
+}
+
+
+.edituser .password{
+	height:20px;
+	width:150px;
+	font-size:14px;
+}
+
+.edituser button{
+	border-radius:4px;
+	background:#d1382d;
+	padding:5px 7px 5px 7px;
+	color:#fff;
+	border:none;
+	font-size:12px;
+	text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+	box-shadow: 0 1px 5px rgba(0,0,0,.4) inset;
+	float:right;
+	margin-top:14px;
+	margin-right:10px;
+}
+
+.edituser button:active{
+	background:#c42f2f;
+
+}
+
+.deleteuser{
+	float:right;
+	background:url(../imgs/delete.png) no-repeat;
+	padding-left:20px;
+	color:#000;
+	margin-right:10px;
+}
+
+.deleteuser a:link,.deleteuser a:visited{
+	color:#333333;
+	text-decoration:none;
+}
+
+.deleteuser a:hover{
+	color:#d1382d;
+	text-decoration:underline;
 }

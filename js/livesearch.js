@@ -39,3 +39,8 @@ function putResults(data){
 		ulList.appendChild(item);
 	}
 }
+// Collapsable edit user
+$('.redit').click(function(){
+   alert("Teste");
+
+});
