@@ -156,3 +156,9 @@ function validateRegistration(){
 }
 
 
+function deleteUser(id){
+	var answer =confirm("Do you really want to delete this user??");
+	this.innerHTML="tteeee";
+	console.log(answer);
+
+}

@@ -17,11 +17,15 @@
         	<div class="container">
             	<div class="news">
                     <div class="box">
+                       <?php if($data->userCan($_SESSION['privilegeid'],"editUsers")) { ?>
                        <h1>Manage Users</h1>
                        Here you can manage the users and promote them to admin and editors.
                        <div class="userlist">
                         <?php printUsers($data->getUsers()); ?>
                        </div>
+                       <?php } else {?>
+                        <h1>You can't edit users</h1>
+                       <?php }?>
     				</div>
                 </div>
                 <div class="sidebar">
