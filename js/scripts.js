@@ -57,10 +57,6 @@ function computeDiff(date){
  $(function(){
             
 
-            //-------------------------------
-            // Minimal
-            //-------------------------------
-            $('#myTags').tagit();
 
             //-------------------------------
             // Single field
@@ -174,4 +170,48 @@ function deleteUser(id,obj){
 	    xmlHttp.send( null );
 	    return xmlHttp.responseText;
 	} 
+}
+
+function editUser(id,obj){
+	var editbox=obj.parentNode;
+	var answer =confirm("Do you really want to commit changes?");
+	if(answer==false)return false;
+
+	// Fetch values
+	var name=editbox.elements["name"].value;
+	var email=editbox.elements["email"].value;
+	var emailreg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+	if(emailreg.test(email) == false && email.length>0) {
+    	alert('Invalid email!');
+    	return false;
+   }
+	var password=editbox.elements["password"].value;
+	var password2=editbox.elements["password2"].value;
+	if(password!=password2){
+		alert('Passwords don\'t match');
+		return false;
+	}
+	var privilege=editbox.elements["privilege"].value;
+
+	// Edit user console.log(name+" "+email+" "+password+ " " + password2 + " " + privilege);
+
+	var requestURL="api/edituser.php?apikey=jabana123&userid="+id;
+
+	if(name.length>0) requestURL=requestURL+"&name="+name;
+	if(email.length>0) requestURL=requestURL+"&email="+email;
+	if(privilege.length>0) requestURL=requestURL+"&privilege="+privilege;
+	if(password.length>0) requestURL=requestURL+"&password="+password;
+
+	console.log(requestURL);
+
+	// Edit
+	var xmlHttp = null;
+	xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET",requestURL, false );
+	xmlHttp.send( null );
+	document.location.reload(true);
+	return xmlHttp.responseText;
+
+
+	
 }

@@ -91,7 +91,7 @@ function printUsers($users){
 			Name <input type="text" name="name" class="name" required="required" value="<?php echo $user['name']?>">
 			Email <input type="text" name="email" class="email" required="required" value="<?php echo $user['email']?>">
 			Role 
-			<select>
+			<select name="privilege">
 			<?php 
 				$privileges=$data->getPrivileges();
 				foreach($privileges as $row){
@@ -106,9 +106,9 @@ function printUsers($users){
 			?>
 			</select>
 			<br/>
-			Password <input type="password" name="password" class="password" required="required" placeholder="Leave empty to keep">
-			Confirm Password <input type="password" name="password2" class="password" required="required" placeholder="Leave empty to keep">
-			<button type="button">Save Changes</button>
+			Password <input type="password" name="password" class="password" placeholder="Leave empty to keep">
+			Confirm Password <input type="password" name="password2" class="password" placeholder="Leave empty to keep">
+			<button type="button" onclick="editUser(<?php echo $user['id'];?>,this)" >Save Changes</button>
 		</form>
 		<?php
 		echo "</div>";
