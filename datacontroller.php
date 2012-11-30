@@ -323,7 +323,35 @@ class DataController{
 		$this->dataBase->query('delete from user where id='.$id);
 	}
 
+	function getPrivilegeId($name){
+		$id=$this->dataBase->query('select id from privilege where name=\''.$name.'\'');
+		$id=$id->fetch(PDO::FETCH_ASSOC);
+		$id=$id['id'];
+		return $id;
+	}
+	function editUser($id,$name,$password,$email,$privilege){
+		$privilegeid=$this->getPrivilegeId($privilege);
+		if($privilege!=NULL){
+			$this->dataBase->query('update user set privilegeid=\''.$privilegeid.'\' where id='.$id);
+		}
+
+		if($name!=NULL){
+			$this->dataBase->query('update user set name=\''.$name.'\' where id='.$id);
+		}
+
+		if($password!=NULL){
+			$password=sha1($password);
+			$this->dataBase->query('update user set password=\''.$password.'\' where id='.$id);
+		}
+
+		if($email!=NULL){
+			$this->dataBase->query('update user set email=\''.$email.'\' where id='.$id);
+		}
+
+	}
+
 };
 
 $data=new DataController($_database,$_siteurl);
+
 ?>
