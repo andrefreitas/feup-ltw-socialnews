@@ -950,6 +950,19 @@ html, body {
 	padding-bottom:10px;
 }
 
-.serveritem>.newsresulti:last-child{
-	border-bottom:none;
+.serveritem form button{
+	margin-top:5px;
+	border-radius:4px;
+	background:#d1382d;
+	padding:5px 7px 5px 7px;
+	color:#fff;
+	border:none;
+	font-size:12px;
+	text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+	box-shadow: 0 1px 5px rgba(0,0,0,.4) inset;
+}
+
+.serveritem form button:active{
+	background:#c42f2f;
+
 }

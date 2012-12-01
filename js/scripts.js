@@ -255,21 +255,21 @@ var importedNews;
 
 function importNews(obj,serverid){
 
-	/* // Request data
-	var startDate=prompt("Start Date?","YYYY-MM-DD-THH:MM:SS");
+	 // Request data
+	var startDate=prompt("Start Date?","2012-01-01T00:00:00");
 	while(startDate==null)
-	startDate=prompt("Start Date?","YYYY-MM-DD-THH:MM:SS");
-	var endDate=prompt("End Date?","YYYY-MM-DD-THH:MM:SS");
+	startDate=prompt("Start Date?","2012-01-01T00:00:00");
+	var endDate=prompt("End Date?","2012-12-01T00:00:00");
 	while(endDate==null)
-	endDate=prompt("End Date?","YYYY-MM-DD-THH:MM:SS");
+	endDate=prompt("End Date?","2012-12-01T00:00:00");
 	var tags=prompt("Tags? (separated by space)","");
 	while(endDate==null)
 	endDate=prompt("Tags? (separated by space)","");
 
 	// Fetch remote news
 
-	//requestURL="api/fetchremotenews.php?start_date="+startDate+"&end_date="+endDate+"&tags="+tags+"&serverid="+serverid; */
-	requestURL="api/fetchremotenews.php?start_date=2010-10-01T01:01:01&end_date=2012-12-01T01:01:01&tags=Feup&serverid=42";
+	requestURL="api/fetchremotenews.php?start_date="+startDate+"&end_date="+endDate+"&tags="+tags+"&serverid="+serverid; 
+	//requestURL="api/fetchremotenews.php?start_date=2010-10-01T01:01:01&end_date=2012-12-01T01:01:01&tags=Feup&serverid=42";
 	var xmlHttp = null;
 	xmlHttp = new XMLHttpRequest();
 	xmlHttp.open( "GET",requestURL, false );
@@ -282,6 +282,7 @@ function importNews(obj,serverid){
   	// Process Answer
   	importedNews=answer.data;
 
+
   	// Add news inside a box to allow user to select
   	var serverbox=obj.parentNode;
   	var newslist=document.createElement("form");
@@ -289,5 +290,6 @@ function importNews(obj,serverid){
   		newslist.innerHTML=newslist.innerHTML+"<div class=\"newsresulti\"><input type=\"checkbox\" name=\""+importedNews[i].id+"\" value=\""+importedNews[i].id+"\">"+importedNews[i].title+"</div>";
   		console.log(importedNews[i].title);
   	}
+    newslist.innerHTML=newslist.innerHTML+"<button type=\"button\" onclick=\"saveNewsToDatabase("+serverid+",this)\" >Import news</button>";
   	serverbox.appendChild(newslist);
 }
