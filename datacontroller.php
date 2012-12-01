@@ -400,6 +400,24 @@ class DataController{
 		return $news;
 	}
 
+	function addComment($userid,$newsid,$content){
+		$date= new DateTime();
+		$date= $date->format('Y-m-d\TH:i:s');
+		$query="insert into comment(userId,newsId,datePosted,content) values (".$userid.",".$newsid.",\"".$date."\",\"".$content."\")";
+		$this->dataBase->query($query);
+
+		// Get commentid
+		$id=$this->dataBase->query('select seq from sqlite_sequence where name=\'comment\'');
+		$id=$id->fetch(PDO::FETCH_ASSOC);
+		$id=$id['seq'];
+		return $id;
+	}
+
+	function deleteComment($id){
+		$this->dataBase->query("delete from comment where id=".$id);
+
+	}
+
 };
 
 $data=new DataController($_database,$_siteurl);
