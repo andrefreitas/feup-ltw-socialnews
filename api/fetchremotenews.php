@@ -3,10 +3,15 @@
 	include  'datacontroller.php';
 	header('Content-type: application/json');
 	// Handle Errors
-	$allErrors=Array("Missing start_date","Missing end_date", "Missing tags","start_date can't be greater or equal than end_date","start_date invalid format","end_date invalid format");
+	$allErrors=Array("Missing start_date","Missing end_date", "Missing tags","start_date can't be greater or equal than end_date","start_date invalid format","end_date invalid format","Missing serverid");
 	$error=NULL;
 	$errorcode=NULL;
-	if(empty($_GET['start_date'])){
+	if(!isset($_GET['serverid'])){
+		$error=$allErrors[6];
+		$errorcode=7;
+	}
+
+	else if(empty($_GET['start_date'])){
 		$error=$allErrors[0];
 		$errorcode=1;
 	} else if(empty($_GET['end_date'])){
@@ -48,28 +53,18 @@
 		$errorArray=Array("result"=>'error',"reason"=>$error,"code"=>$errorcode);
 		$errorJson=json_encode($errorArray);
 		echo $errorJson;
-	} else {
-	
-	// Else -->
-	
-	$start_date=$_GET["start_date"];
-	$end_date=$_GET["end_date"];
-	$tags=explode(' ',$_GET["tags"]);
-	$servername=$data->getServerName();
-	
-	$newsJson=Array("result"=>"success","server_name"=>$servername,"data"=>Array());
-	// Handle news
-	$news=$data->getNewsFilter($tags,$start_date,$end_date);
-	foreach($news as $row){
-		$newsurl=$_siteurl."/article.php?url=".$row['url'];
-		$author=$data->getNewsAuthor($row['id']);
-		$author=$author['name'];
-		$tags=$data->getNewsTags($row['id']);
-		$newsJson['data'][]=Array("id"=>$row["id"],"title"=>$row["title"],"date"=>$row["datePosted"],"text"=>$row["content"],"posted_by"=>$author,"url"=>$newsurl,"tags"=>$tags);
-	}
-	echo json_encode($newsJson);
-	
+	} else{
+		// Prepare
+		$serverid=$_GET['serverid'];
+		$tags=$_GET['tags'];
+		$start_date=$_GET['start_date'];
+		$end_date=$_GET['end_date'];
+		$apiurl=$data->getServerURL($serverid);
+
+		// Fetch news
+		$remotenews=file_get_contents($apiurl."?start_date=".$start_date."&end_date=".$end_date."&tags=".$tags);
+		echo $remotenews;
 
 	}
-	
+
 ?>

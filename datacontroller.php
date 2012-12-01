@@ -364,8 +364,13 @@ class DataController{
 		return $servers;
 	}
 
+	function getServerURL($serverid){
+		$serverurl=$this->dataBase->query('select apiurl from newsserver where serverId='.$serverid);
+		$serverurl=$serverurl->fetch(PDO::FETCH_ASSOC);
+		return $serverurl['apiurl'];
+	}
+
 };
 
 $data=new DataController($_database,$_siteurl);
-
 ?>

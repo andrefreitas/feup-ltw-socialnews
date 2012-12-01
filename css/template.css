@@ -907,6 +907,13 @@ html, body {
 	margin-top:10px;
 }
 
+.serveritem form input{
+	width:10px;
+	height:10px;
+	margin-right:10px;
+	margin-left:10px;
+}
+
 .servname{
 	background:url(../imgs/remoteservers.png) no-repeat;
 	padding-left:25px;
@@ -930,4 +937,19 @@ html, body {
 	padding-left:20px;
 	margin-right:10px;
 	float:right;
+}
+
+.serveritem input{
+	margin:0;
+	padding:0;
+}
+
+.serveritem .newsresulti{
+	border-bottom:dashed 1px #cccccc;
+	margin:0px;
+	padding-bottom:10px;
+}
+
+.serveritem>.newsresulti:last-child{
+	border-bottom:none;
 }
