@@ -111,6 +111,16 @@ create table newsServer(
 );
 
 
+/* Remote News */
+drop table if exists remotenews;
+create table remotenews(
+	id integer primary key autoincrement,
+	title text,
+	url text,
+	remoteserverid integer,
+	foreign key(remoteserverid) references newsServer(serverId)
+);
+
 /* Metrics*/
 drop table if exists newsMetrics;
 create table newsMetrics(

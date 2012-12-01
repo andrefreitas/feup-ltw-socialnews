@@ -255,6 +255,12 @@ var importedNews;
 
 function importNews(obj,serverid){
 
+	//Clean previous search
+	var serverbox=obj.parentNode;
+  	if(serverbox.getElementsByTagName("form").length>0){
+  		serverbox.removeChild(serverbox.getElementsByTagName("form")[0]);
+  	}
+
 	 // Request data
 	var startDate=prompt("Start Date?","2012-01-01T00:00:00");
 	while(startDate==null)
@@ -275,21 +281,38 @@ function importNews(obj,serverid){
 	xmlHttp.open( "GET",requestURL, false );
 	xmlHttp.send( null );
     var answer=JSON.parse(xmlHttp.responseText); 
-   if(answer.result=="error"){
+   if(answer.result=="error" || answer.data.length==0 ){
    		alert("No results :(");
    		return false;
    }
+  	
   	// Process Answer
   	importedNews=answer.data;
 
-
   	// Add news inside a box to allow user to select
-  	var serverbox=obj.parentNode;
   	var newslist=document.createElement("form");
   	for(var i=0; i< importedNews.length; i++){
   		newslist.innerHTML=newslist.innerHTML+"<div class=\"newsresulti\"><input type=\"checkbox\" name=\""+importedNews[i].id+"\" value=\""+importedNews[i].id+"\">"+importedNews[i].title+"</div>";
-  		console.log(importedNews[i].title);
+  		//console.log(importedNews[i].title);
   	}
     newslist.innerHTML=newslist.innerHTML+"<button type=\"button\" onclick=\"saveNewsToDatabase("+serverid+",this)\" >Import news</button>";
   	serverbox.appendChild(newslist);
+}
+
+function saveNewsToDatabase(serverid,obj){
+	// Fetch checked ids
+	var newsForm=obj.parentNode;
+	var allchecks=newsForm.getElementsByTagName("input");
+	var checkedIds=Array();
+	for(var i=0; i<allchecks.length; i++){
+		if(allchecks[i].checked){
+			checkedIds.push(allchecks[i].value);
+		}
+	}
+	var jsonchecked=JSON.stringify(checkedIds);
+	console.log(jsonchecked);
+
+	// Save news titles and urls in the database by giving the checked news, serverid and all news retrieved in json format
+	
+
 }

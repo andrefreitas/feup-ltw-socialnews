@@ -224,3 +224,9 @@ insert into comment(userId,newsId,content,datePosted)
 
 insert into comment(userId,newsId,content,datePosted) 
 	values(2,5,"Singers have good voices (captain obvious strikes again)","2012-11-20T15:23:12");
+
+/* Remote servers */
+insert into newsServer(name,apiurl) values("Tiago Server","http://gnomo.fe.up.pt/~ei10090/stopreadgo/api/news.php");
+insert into newsServer(name,apiurl) values("Rui Couto","http://paginas.fe.up.pt/~ei10072/LTW/Proj1/api/news.php");
+insert into newsServer(name,apiurl) values("Diogo Pinela","http://paginas.fe.up.pt/~ei10083/fishynews/api/news.php");
+insert into newsServer(name,apiurl) values("Jorge","http://paginas.fe.up.pt/~ei10066/LTW/T3G3/api/news.php");
