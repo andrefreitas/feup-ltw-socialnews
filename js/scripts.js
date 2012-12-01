@@ -251,7 +251,7 @@ function addServer(obj){
 
 }
 
-var importedNews;
+var importedNewsAr=Array();
 
 function importNews(obj,serverid){
 
@@ -287,8 +287,9 @@ function importNews(obj,serverid){
    }
   	
   	// Process Answer
-  	importedNews=answer.data;
+  	importedNewsAr[serverid.toString()]=answer.data;
 
+  	importedNews=answer.data;
   	// Add news inside a box to allow user to select
   	var newslist=document.createElement("form");
   	for(var i=0; i< importedNews.length; i++){
@@ -297,6 +298,13 @@ function importNews(obj,serverid){
   	}
     newslist.innerHTML=newslist.innerHTML+"<button type=\"button\" onclick=\"saveNewsToDatabase("+serverid+",this)\" >Import news</button>";
   	serverbox.appendChild(newslist);
+}
+
+function inArray(array, value) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] == value) return true;
+    }
+    return false;
 }
 
 function saveNewsToDatabase(serverid,obj){
@@ -309,10 +317,22 @@ function saveNewsToDatabase(serverid,obj){
 			checkedIds.push(allchecks[i].value);
 		}
 	}
-	var jsonchecked=JSON.stringify(checkedIds);
-	console.log(jsonchecked);
 
-	// Save news titles and urls in the database by giving the checked news, serverid and all news retrieved in json format
-	
+
+	// Save selected news titles and urls in database
+
+	var thisservernews=importedNewsAr[serverid.toString()];
+	var selectednews=Array();
+	for(var i=0; i<thisservernews.length; i++){
+		if( inArray(checkedIds,thisservernews[i].id)){
+			var news=Array();
+			news["title"]=thisservernews[i].title;
+			news["url"]=thisservernews[i].url;
+			news["id"]=thisservernews[i].id;
+			console.log(news);
+			selectednews.push(news);
+		}
+	}
+	console.log(selectednews);
 
 }
