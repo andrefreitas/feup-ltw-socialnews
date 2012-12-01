@@ -162,7 +162,7 @@ function printNewsList($news){
 function printFavoriteNews($userid){
 	global $data;
 	$news=$data->getFavoriteNews($userid);
-	printNewsList($news);
+    printNewsList($news);
 }
 
 
