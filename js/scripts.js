@@ -329,10 +329,11 @@ function saveNewsToDatabase(serverid,obj){
 			news["title"]=thisservernews[i].title;
 			news["url"]=thisservernews[i].url;
 			news["id"]=thisservernews[i].id;
-			console.log(news);
+			//console.log(news);
 			selectednews.push(news);
 		}
 	}
-	console.log(selectednews);
+
+	// Use api to save each imported news
 
 }

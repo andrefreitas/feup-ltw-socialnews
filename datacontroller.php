@@ -370,6 +370,9 @@ class DataController{
 		return $serverurl['apiurl'];
 	}
 
+	function addRemoteNews($serverid,$title,$url){
+		$this->dataBase->query("insert into remotenews(remoteserverid,title,url) values(".$serverid.",\"".$title."\",\"".$url."\")");
+	}
 };
 
 $data=new DataController($_database,$_siteurl);
