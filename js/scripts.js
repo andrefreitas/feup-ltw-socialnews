@@ -245,7 +245,7 @@ function addServer(obj){
     var serverlist=document.getElementsByClassName("serverlist")[0];
     var serveritem=document.createElement("div");
     serveritem.setAttribute("class","serveritem");
-    serveritem.innerHTML="<span class=\"servname\">"+servername+ "</span> <span class=\"servurl\">" + serverurl+"</span><span class=\"deleteserver\">Delete Server</span> <span class=\"importnews\" onclick=\"importNews(this,"+answer.Serverid+")\">Import News</span>";
+    serveritem.innerHTML="<span class=\"servname\">"+servername+ "</span> <span class=\"servurl\">" + serverurl+"</span><span class=\"deleteserver\">Delete Server</span> <span class=\"importnews\" onclick=\"importNews(this,"+answer.Serverid+")\"><a href=\"#\">Import News</a></span>";
     
     serverlist.appendChild(serveritem);
 
@@ -296,7 +296,7 @@ function importNews(obj,serverid){
   		newslist.innerHTML=newslist.innerHTML+"<div class=\"newsresulti\"><input type=\"checkbox\" name=\""+importedNews[i].id+"\" value=\""+importedNews[i].id+"\">"+importedNews[i].title+"</div>";
   		//console.log(importedNews[i].title);
   	}
-    newslist.innerHTML=newslist.innerHTML+"<button type=\"button\" onclick=\"saveNewsToDatabase("+serverid+",this)\" >Import news</button>";
+    newslist.innerHTML=newslist.innerHTML+"<button type=\"button\" class=\"saveimportednews\" onclick=\"saveNewsToDatabase("+serverid+",this)\" >Import news</button>";
   	serverbox.appendChild(newslist);
 }
 
@@ -308,6 +308,7 @@ function inArray(array, value) {
 }
 
 function saveNewsToDatabase(serverid,obj){
+
 	// Fetch checked ids
 	var newsForm=obj.parentNode;
 	var allchecks=newsForm.getElementsByTagName("input");
@@ -331,6 +332,8 @@ function saveNewsToDatabase(serverid,obj){
 			selectednews.push(news);
 		}
 	}
+	if(selectednews.length==0) return false;
+	newsForm.parentNode.removeChild(newsForm);
 
 	// Use api to save each imported news
 	var success=true;
@@ -347,7 +350,7 @@ function saveNewsToDatabase(serverid,obj){
    			if(answer.result=="error") success=false;
    			
 	}
-	
 	if(success) alert("News saved sucessfully :)");
 	else alert("News could not be saved :(");
+
 }

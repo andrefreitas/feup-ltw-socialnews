@@ -37,6 +37,10 @@
 						?>
                         
                     </div>
+                    <div class="partners">
+                        <h3>Our Partners</h3>
+                        <?php printRemoteNews(); ?>
+                    </div>
                 </div>
                 <div class="sidebar">
                 	<?php include_once 'userbox.php'; ?>  

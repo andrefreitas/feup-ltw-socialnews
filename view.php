@@ -119,10 +119,24 @@ function printServers($servers){
 	$i=0;
 	foreach($servers as $server){
 		echo "<div class=\"serveritem\">";
-		echo "<span class=\"servname\">".$server['name']."</span> <span class=\"servurl\">".$server['apiurl']."</span><span class=\"deleteserver\">Delete Server</span> <span class=\"importnews\" onclick=\"importNews(this,".$server['serverId'].")\">Import News</span>";
+		echo "<span class=\"servname\">".$server['name']."</span> <span class=\"servurl\">".$server['apiurl']."</span><span class=\"deleteserver\">Delete Server</span> <span class=\"importnews\" onclick=\"importNews(this,".$server['serverId'].")\"><a href=\"#\">Import News</a></span>";
 		echo "</div>";
 	}
 
+}
+
+
+function printRemoteNews(){
+	global $data;
+	$remotenews=$data->getRemoteNews();
+
+	
+	foreach($remotenews as $row){
+		echo "<div class=\"remotenewsi\">";
+		echo "<h5>".$row['title']."</h5>";
+		echo "<a href=\"".$row['url']."\">".$row['url']."</a>";
+		echo "</div>\n";
+	}
 }
 
 ?>

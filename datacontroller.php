@@ -373,6 +373,12 @@ class DataController{
 	function addRemoteNews($serverid,$title,$url){
 		$this->dataBase->query("insert into remotenews(remoteserverid,title,url) values(".$serverid.",\"".$title."\",\"".$url."\")");
 	}
+
+	function getRemoteNews(){
+		$news=$this->dataBase->query('select * from remotenews');
+		$news=$news->fetchAll(PDO::FETCH_ASSOC);
+		return $news;
+	}
 };
 
 $data=new DataController($_database,$_siteurl);
