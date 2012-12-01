@@ -849,3 +849,85 @@ html, body {
 	color:#d1382d;
 	text-decoration:underline;
 }
+
+/* Manage Remote servers */
+
+.addserver{
+	padding:0px 10px 2px 10px;
+	width:628px;
+	border:solid 1px #cccccc;
+	font-size:14px;
+	margin-top:10px;
+	height:90px;
+	background-color:#efefef;
+}
+
+.servernamei{
+	height:10px;
+	margin-right:10px;
+	font-size:14px;
+}
+
+.serverurli{
+	height:10px;
+	width:200px;
+	margin-right:10px;
+	font-size:14px;
+	float:right;
+}
+
+.addserver button{
+	border-radius:4px;
+	background:#d1382d;
+	padding:5px 7px 5px 7px;
+	color:#fff;
+	border:none;
+	font-size:12px;
+	text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+	box-shadow: 0 1px 5px rgba(0,0,0,.4) inset;
+	float:right;
+	margin-top:10px;
+	margin-right:10px;
+}
+
+.addserver button:active{
+	background:#c42f2f;
+
+}
+
+.serverlist{
+	margin-top:15px;
+}
+
+.serveritem{
+	padding:6px 10px 6px 10px;
+	width:628px;
+	border:solid 1px #cccccc;
+	font-size:14px;
+	margin-top:10px;
+}
+
+.servname{
+	background:url(../imgs/remoteservers.png) no-repeat;
+	padding-left:25px;
+}
+
+.servurl{
+	background:url(../imgs/serverurl.gif) no-repeat;
+	padding-left:20px;
+	font-size:10px;
+	font-style:italic;
+}
+
+.deleteserver{
+	float:right;
+	background:url(../imgs/delete.png) no-repeat;
+	padding-left:20px;
+}
+
+.importnews{
+	background:url(../imgs/importnews.png) no-repeat;
+	padding-left:20px;
+	margin-right:10px;
+	float:right;
+}

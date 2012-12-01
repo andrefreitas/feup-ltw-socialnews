@@ -14,13 +14,23 @@
         	<div class="container">
             	<div class="news">
                     <div class="box">
-                <h1>Remote servers</h1>
-                Here you can manage remote servers, search news and import them.
-                    <div class="addserver">
-                        <form>
-                            Server<input type="text" name="servername">
-                        </form>
-                    </div>
+                        <h1>Remote servers</h1>
+                        Here you can manage remote servers, search news and import them.
+                            
+                        <div class="addserver">
+                            <form>
+                                Server Name <input type="text" name="servername" class="servernamei" style="height:20px" />
+                                Server API URL <input type="text" name="serverurl" class="serverurli" style="height:20px" />
+                                <button type="button" onclick="addServer(this)" >Add New Server</button>
+                            </form>
+                        </div>
+
+                        <div class="serverlist">
+                            <?php 
+                             $servers=$data->getServers();
+                            printServers($servers); 
+                            ?>
+                        </div>
 
     				</div>
                 </div>

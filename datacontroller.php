@@ -350,6 +350,20 @@ class DataController{
 
 	}
 
+	function addServer($servername, $serverurl){
+		$this->dataBase->query('insert into newsserver(name, apiurl) values(\''.$servername.'\',\''.$serverurl.'\')');
+		$serverid= $this->dataBase->query('select seq from sqlite_sequence where name=\'newsServer\'');
+		$serverid=$serverid->fetch(PDO::FETCH_ASSOC);
+		$serverid=$serverid['seq'];
+		return $serverid;
+	}
+
+	function getServers(){
+		$servers=$this->dataBase->query('select * from newsserver');
+		$servers=$servers->fetchAll(PDO::FETCH_ASSOC);
+		return $servers;
+	}
+
 };
 
 $data=new DataController($_database,$_siteurl);

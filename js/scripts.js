@@ -215,3 +215,43 @@ function editUser(id,obj){
 
 	
 }
+
+function addServer(obj){
+	var form=obj.parentNode;
+	var servername=form.elements["servername"].value;
+	var serverurl=form.elements["serverurl"].value;
+
+	if(servername.length==0 || serverurl.length==0 ){
+		alert("Please fill all the data");
+		return false;
+	} 
+
+	// Do request
+	requestURL="api/addserver.php?apikey=jabana123&servername="+servername+"&serverurl="+serverurl;
+
+	// Edit
+	var xmlHttp = null;
+	xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET",requestURL, false );
+	xmlHttp.send( null );
+    var answer=JSON.parse(xmlHttp.responseText); 
+  
+
+    // Clean
+    form.elements["servername"].value="";
+    form.elements["serverurl"].value="";
+
+    // Add to the dom
+    var serverlist=document.getElementsByClassName("serverlist")[0];
+    var serveritem=document.createElement("div");
+    serveritem.setAttribute("class","serveritem");
+    serveritem.innerHTML="<span class=\"servname\">"+servername+ "</span> <span class=\"servurl\">" + serverurl+"</span><span class=\"deleteserver\">Delete Server</span> <span class=\"importnews\" onclick=\"importNews(this,"+answer.Serverid+")\">Import News</span>";
+    
+    serverlist.appendChild(serveritem);
+
+}
+
+function importNews(obj,serverid){
+	alert("Teste");
+
+}
