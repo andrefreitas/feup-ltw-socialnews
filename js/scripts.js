@@ -318,9 +318,7 @@ function saveNewsToDatabase(serverid,obj){
 		}
 	}
 
-
 	// Save selected news titles and urls in database
-
 	var thisservernews=importedNewsAr[serverid.toString()];
 	var selectednews=Array();
 	for(var i=0; i<thisservernews.length; i++){
@@ -335,5 +333,21 @@ function saveNewsToDatabase(serverid,obj){
 	}
 
 	// Use api to save each imported news
-
+	var success=true;
+	for(var i=0; i<selectednews.length; i++){
+			var title=selectednews[i]['title'];
+			var url=selectednews[i]['url'];
+			// Send request to save news
+			var requestURL="api/saveremotenews.php?apikey=jabana123&serverid="+serverid+"&title="+title+"&url="+url;
+			var xmlHttp = null;
+			xmlHttp = new XMLHttpRequest();
+			xmlHttp.open( "GET",requestURL, false );
+			xmlHttp.send( null );
+			 var answer=JSON.parse(xmlHttp.responseText); 
+   			if(answer.result=="error") success=false;
+   			
+	}
+	
+	if(success) alert("News saved sucessfully :)");
+	else alert("News could not be saved :(");
 }
