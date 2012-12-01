@@ -245,7 +245,7 @@ function addServer(obj){
     var serverlist=document.getElementsByClassName("serverlist")[0];
     var serveritem=document.createElement("div");
     serveritem.setAttribute("class","serveritem");
-    serveritem.innerHTML="<span class=\"servname\">"+servername+ "</span> <span class=\"servurl\">" + serverurl+"</span><span class=\"deleteserver\">Delete Server</span> <span class=\"importnews\" onclick=\"importNews(this,"+answer.Serverid+")\"><a href=\"#\">Import News</a></span>";
+    serveritem.innerHTML="<span class=\"servname\">"+servername+ "</span> <span class=\"servurl\">" + serverurl+"</span><span class=\"deleteserver\" onclick=\"deleteServer(this,"+answer.Serverid+")\"><a href=\"#\">Delete Server</a></span> <span class=\"importnews\" onclick=\"importNews(this,"+answer.Serverid+")\"><a href=\"#\">Import News</a></span>";
     
     serverlist.appendChild(serveritem);
 
@@ -352,5 +352,50 @@ function saveNewsToDatabase(serverid,obj){
 	}
 	if(success) alert("News saved sucessfully :)");
 	else alert("News could not be saved :(");
+
+}
+
+function deleteServer(obj,serverid){
+	alert(serverid);
+	var answer =confirm("Are you sure you want to delete this server?");
+	if(answer==false)return false;
+
+	var serveritem=obj.parentNode;
+	serveritem.parentNode.removeChild(serveritem);
+}
+
+function favoriteNews(obj,userid,newsid){
+	// First check state
+	var isfavorite=true;
+	var requestURL="api/newsisfavorite.php?apikey=jabana123&userid="+userid+"&newsid="+newsid;
+	var xmlHttp = null;
+	xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET",requestURL, false );
+    xmlHttp.send( null );
+	var answer=JSON.parse(xmlHttp.responseText); 
+   	if(answer.Answer=="no") isfavorite=false;
+
+   // Favorite or unfavorite
+   var action="1";
+   if(isfavorite) var action="0";
+   var requestURL="api/dofavoritenews.php?apikey=jabana123&userid="+userid+"&newsid="+newsid+"&action="+action;
+   var xmlHttp = null;
+   xmlHttp = new XMLHttpRequest();
+   xmlHttp.open( "GET",requestURL, false );
+   xmlHttp.send( null );
+
+   // Update image
+   if(action=="1"){
+   	obj.setAttribute("src","imgs/favoriteyes.png");
+   }else {
+   	obj.setAttribute("src","imgs/favoriteno.png");
+   }
+
+   // Remove if is in myfavorites.php
+   if(window.location.href.toString().search("myfavorites.php")>0 && action=="0"){
+   	var line=obj.parentNode;
+   	line.parentNode.removeChild(line);
+   	console.log("Removeu");
+   }
 
 }

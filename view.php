@@ -119,7 +119,7 @@ function printServers($servers){
 	$i=0;
 	foreach($servers as $server){
 		echo "<div class=\"serveritem\">";
-		echo "<span class=\"servname\">".$server['name']."</span> <span class=\"servurl\">".$server['apiurl']."</span><span class=\"deleteserver\">Delete Server</span> <span class=\"importnews\" onclick=\"importNews(this,".$server['serverId'].")\"><a href=\"#\">Import News</a></span>";
+		echo "<span class=\"servname\">".$server['name']."</span> <span class=\"servurl\">".$server['apiurl']."</span><span class=\"deleteserver\" onclick=\"deleteServer(this,".$server['serverId'].")\"><a href=\"#\">Delete Server</a></span> <span class=\"importnews\" onclick=\"importNews(this,".$server['serverId'].")\"><a href=\"#\">Import News</a></span>";
 		echo "</div>";
 	}
 
@@ -138,5 +138,32 @@ function printRemoteNews(){
 		echo "</div>\n";
 	}
 }
+
+function printNewsList($news){
+	global $data;
+	echo "<div class=\"newslist\">";
+	foreach($news as $row ){
+		echo "<div class=\"newsi\">";
+		echo "<span class=\"newstitlei\"><a href=\"article.php?url=".$row['url']."\">".$row['title']."</a></span>";
+
+        if(isset($_SESSION['user']['id'])){
+        echo "<img src=\"imgs/favorite";
+        if($data->isfavorite($_SESSION['user']['id'], $row['id']))
+        echo "yes";
+        else echo "no";
+        echo ".png\" class=\"favoriteicon\" onclick=\"favoriteNews(this,".$_SESSION['user']['id'].",".$row['id'].")\">";
+        }
+
+		echo "</div>\n";
+	}
+	echo "</div>";
+}
+
+function printFavoriteNews($userid){
+	global $data;
+	$news=$data->getFavoriteNews($userid);
+	printNewsList($news);
+}
+
 
 ?>

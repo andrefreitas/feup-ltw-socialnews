@@ -294,7 +294,7 @@ class DataController{
 				// If found put in the result
 				if($foundkeyword){
 					$found=Array();
-					$found['url']=$this->siteurl."/article.php?url=".$row['url'];
+					$found['url']="article.php?url=".$row['url'];
 					$found['title']=$row['title'];
 					$found['excerpt']=$substringfound;
 					$newsfound[]=$found;
@@ -379,6 +379,27 @@ class DataController{
 		$news=$news->fetchAll(PDO::FETCH_ASSOC);
 		return $news;
 	}
+
+	function isfavorite($userid, $newsid){
+		$favorite=$this->dataBase->query("select * from favorite where userid=".$userid." and newsid=".$newsid);
+		$favorite=$favorite->fetch(PDO::FETCH_ASSOC);
+		return $favorite!=NULL;
+	}
+
+	function favoriteNews($userid, $newsid){
+		$this->dataBase->query("insert into favorite(userid,newsid) values(".$userid.",".$newsid.")");
+	}
+
+	function unfavoriteNews($userid, $newsid){
+		$this->dataBase->query("delete from favorite where userid=".$userid." and newsid=".$newsid);
+	}
+
+	function getFavoriteNews($userid){
+		$news=$this->dataBase->query("select * from news where id in(select newsid from favorite where userid=".$userid.")");
+		$news=$news->fetchAll(PDO::FETCH_ASSOC);
+		return $news;
+	}
+
 };
 
 $data=new DataController($_database,$_siteurl);

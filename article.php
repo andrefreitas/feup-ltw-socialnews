@@ -20,7 +20,17 @@
                     <div class="article">
     				<?php
     					
-    					echo "<h1>".$news['title']."</h1>";
+    					echo "<h1>".$news['title'];
+
+                        // Print favorite icon
+                        if(isset($_SESSION['user']['id'])){
+                        echo "<img src=\"imgs/favorite";
+                        if($data->isfavorite($_SESSION['user']['id'], $news['id']))
+                            echo "yes";
+                        else echo "no";
+                        echo ".png\" class=\"favoriteicon\" onclick=\"favoriteNews(this,".$_SESSION['user']['id'].",".$news['id'].")\">";
+                        }
+                        echo "</h1>";
     					$datetime= new DateTime($news['datePosted']);
     					$author= $data->getNewsAuthor($news['id']);
     					echo "<span class=\"info\"> Posted on ".$datetime->format('Y/m/d H:i:s')." by ".$author['name']."</span>";

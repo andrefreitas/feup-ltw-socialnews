@@ -979,6 +979,7 @@ html, body {
 	text-decoration:underline;
 }
 
+/* partners news in homepage */
 .partners{
 	padding-top:20px;
 	padding-right:20px;
@@ -1020,3 +1021,26 @@ html, body {
 	text-decoration:underline;
 }
 
+/* Favorite News */
+.favoriteicon{
+	margin-left: 10px;
+	
+}
+
+.newsi{
+	padding-bottom:10px;
+	border-bottom:dashed 1px #ccc;
+	margin-bottom:10px;
+}
+.newslist{
+	margin-top:10px;
+}
+.newsi a{
+	color:#000;
+	text-decoration:none;
+}
+
+.newsi a:hover{
+	color:#d1382d;
+	text-decoration:underline;
+}
