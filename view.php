@@ -211,4 +211,10 @@ function printCategoryNews($id){
 	$news= $data->getCategoryNewsById($id);
 	printNewsList($news);
 }
+
+function printAuthorNews($id){
+	global $data;
+	$news= $data->getAllNewsFromAuthor($id);
+	printNewsList($news);
+}
 ?>

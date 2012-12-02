@@ -475,6 +475,12 @@ class DataController{
 		$this->dataBase->query("delete from news where id=".$id);
 	}
 
+	function getAllNewsFromAuthor($id){
+		$news=$this->dataBase->query('SELECT * from news where userid='.$id);
+		$news=$news->fetchAll(PDO::FETCH_ASSOC);
+		return $news;
+	}
+
 };
 $data=new DataController($_database,$_siteurl);
 ?>
