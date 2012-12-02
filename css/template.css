@@ -1308,5 +1308,8 @@ html, body {
 }
 .alltags button:hover{
 	background: #444;
+}
 
+.tagslisti{
+	padding:5px;
 }

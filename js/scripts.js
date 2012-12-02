@@ -535,6 +535,7 @@ function editTags(obj,newsid){
 	}
 	commatags=commatags.substring(0, commatags.length-1);
 	tagsi.setAttribute("value",commatags);
+	tagsi.setAttribute("class","tagslisti");
 	alltagsdiv.innerHTML="";
 	alltagsdiv.appendChild(tagsi);
 
