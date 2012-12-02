@@ -36,11 +36,9 @@
     					echo "<span class=\"info\"> Posted on ".$datetime->format('Y/m/d H:i:s')." by <a href=\"userprofile.php?id=".$author['id']."\">".$author['name']."</a></span>";
 
                         // Check if can edit news
-
                         if($data->userCan($_SESSION['privilegeid'],"editNews") or (isset($_SESSION['user']['id']) and $_SESSION['user']['id']==$author['id'])){
                             echo "<span class=\"editarticlel\"><a href=\"editarticle.php?id=".$news['id']."\">Edit Article</a></span> <span class=\"deletearticlel\" onclick=\"deleteArticle(this,".$news['id'].")\">Delete</span>";
                         }
-
 
     					echo "<div class=\"entry\"> ".$news['content']."</div>";
     					$tags=$data->getNewsTags($news['id']);
@@ -48,7 +46,13 @@
     					foreach($tags as $tag){
     						echo "<span class=\"tagbox\">".$tag."</span> ";
     					}
+                        // Check if can edit tags
+                         if($data->userCan($_SESSION['privilegeid'],"editAllTags") or (isset($_SESSION['user']['id']) and $_SESSION['user']['id']==$author['id'])){
+                            echo "<button type=\"button\" onclick=\"editTags(this,".$news['id'].")\">Edit Tags</button>";
+                        }
     					echo "</div>";
+
+
 
                         printComments($news['id']);
     				?>

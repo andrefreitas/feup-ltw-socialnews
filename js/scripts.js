@@ -510,3 +510,61 @@ function saveProfile(userid){
 	else document.location.reload(true);
 
 }
+
+function editTags(obj,newsid){
+	var alltagsdiv=obj.parentNode;
+	var tagsboxes=alltagsdiv.getElementsByClassName("tagbox");
+	
+	// Fetch current tags and remove them from the DOM
+	var tagsarray=Array();
+	for(var i=0; i<tagsboxes.length; i++){
+		tagsarray.push(tagsboxes[i].innerHTML);
+		alltagsdiv.removeChild(tagsboxes[i]);
+		i--;
+	}
+
+	// Add an input
+	var tagsi=document.createElement("input");
+	tagsi.setAttribute("type","text");
+	tagsi.setAttribute("name","tagslist");
+
+	// Format tags
+	var commatags="";
+	for(var i=0; i<tagsarray.length; i++){
+		commatags=commatags+tagsarray[i]+",";
+	}
+	commatags=commatags.substring(0, commatags.length-1);
+	tagsi.setAttribute("value",commatags);
+	alltagsdiv.innerHTML="";
+	alltagsdiv.appendChild(tagsi);
+
+	// Change button
+	obj.innerHTML="Save Tags";
+	obj.setAttribute("onclick","saveTags(this,"+newsid+")");
+	alltagsdiv.appendChild(obj);
+}
+
+function saveTags(obj,newsid){
+	var answer =confirm("Do you really want to change tags?");
+	if(answer==false){
+		document.location.reload(true);
+		return false;
+	} 
+
+	// Get tags
+	var alltagsdiv=obj.parentNode;
+	var tagslist=alltagsdiv.getElementsByTagName("input")[0].value;
+
+	// Process request
+	requestURL="api/editnews.php?apikey=jabana123&id="+newsid+"&tagslist="+tagslist;
+
+	// Edit
+	var xmlHttp = null;
+	xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET",requestURL, false );
+	xmlHttp.send( null );
+	document.location.reload(true);
+	var answer=JSON.parse(xmlHttp.responseText); 
+	if(answer.Answer!="Ok") return false;
+	else document.location.reload(true);
+}

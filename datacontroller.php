@@ -509,6 +509,7 @@ class DataController{
 		$newsid=$newsid['newsId'];
 		return $this->getNewsById($newsid);
  	}
+
 };
 $data=new DataController($_database,$_siteurl);
 ?>

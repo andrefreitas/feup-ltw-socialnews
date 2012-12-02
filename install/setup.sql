@@ -251,6 +251,7 @@ insert into userAction(name,description) values("doallNewsServers","Can do all i
 insert into userAction(name,description) values("searchRemoteNews","Can search remote news");
 insert into userAction(name,description) values("importRemoteNews","Can import remote news");
 insert into userAction(name,description) values("editAllComments","Can edit and erase all comments");
+insert into userAction(name,description) values("editAllTags","Can edit and erase all tags in all news");
 
 /* Map privileges */
 
@@ -282,6 +283,7 @@ insert into userActionPrivilege(privilegeId,userActionId) values(1,24);
 insert into userActionPrivilege(privilegeId,userActionId) values(1,25);
 insert into userActionPrivilege(privilegeId,userActionId) values(1,26);
 insert into userActionPrivilege(privilegeId,userActionId) values(1,27);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,28);
 
 /* Editor */
 insert into userActionPrivilege(privilegeId,userActionId) values(2,1);
