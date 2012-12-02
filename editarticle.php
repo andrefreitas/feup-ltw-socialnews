@@ -45,8 +45,8 @@
                 Please fill the following fields with data
          
                 <form action="editarticle.php" onClick="editor.post()" method="post">
-                    <input type="text" name="title" class="title" placeholder="Insert title here" value="<?php echo $article['title'] ;?>"/><br/>
-                    <textarea id="content" name="content" style="width: 400px; height: 200px"><?php echo $article['content'] ;?></textarea>
+                    <input type="text" name="title" class="title" placeholder="Insert title here" value="<?php echo $article['title'] ;?>" required="required"/><br/>
+                    <textarea id="content" name="content" style="width: 400px; height: 200px" required="required"><?php echo $article['content'] ;?></textarea>
                 
                     <div class="selectItens">
                      Category:
@@ -60,7 +60,7 @@
                         ?>
                      </select><br/>
                      </div>
-                      Tags(ex. world,sports):<input name="tags" id="mySingleField" name="tags" value="<?php  echo($tags);?>"> 
+                      Tags(ex. world,sports):<input name="tags" id="mySingleField" name="tags" value="<?php  echo($tags);?>" required="required"> 
                     <input name="id" value="<?php echo $article['id'] ;?>" hidden="true"> 
                     <input type="submit" class="button" value="Edit Article" >
                 </form>

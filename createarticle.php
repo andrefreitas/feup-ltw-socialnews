@@ -36,8 +36,8 @@
                 Please fill the following fields with data
          
                 <form action="createarticle.php" onClick="editor.post()" method="post">
-               		<input type="text" name="title" class="title" placeholder="Insert title here"/><br/>
-                    <textarea id="content" name="content" style="width: 400px; height: 200px"></textarea>
+               		<input type="text" name="title" class="title" placeholder="Insert title here" required="required"/><br/>
+                    <textarea id="content" name="content" style="width: 400px; height: 200px" required="required"></textarea>
        			
                 	<div class="selectItens">
                      Category:
@@ -49,7 +49,7 @@
 						?>
                      </select><br/>
                      </div>
-                       Tags(ex. world,sports): <input name="tags" id="mySingleField" name="tags" value=""> 
+                       Tags(ex. world,sports): <input name="tags" id="mySingleField" name="tags" value="" required="required"> 
                 	<input type="submit" class="button" value="Create Article" >
                 </form>
                 

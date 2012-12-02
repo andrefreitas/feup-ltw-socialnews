@@ -455,6 +455,7 @@ class DataController{
 
 	function deleteServer($id){
 		$this->dataBase->query("delete from newsserver where serverid=".$id);
+		$this->dataBase->query("delete from remotenews where remoteserverid=".$id);
 	}
 
 	function editNews($id,$title,$content,$tagslist,$category){
