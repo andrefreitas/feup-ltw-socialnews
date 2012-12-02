@@ -249,6 +249,7 @@ insert into userAction(name,description) values("deleteUsers","Can delete users"
 insert into userAction(name,description) values("doallNewsServers","Can do all in the news remote servers");
 insert into userAction(name,description) values("searchRemoteNews","Can search remote news");
 insert into userAction(name,description) values("importRemoteNews","Can import remote news");
+insert into userAction(name,description) values("editAllComments","Can edit and erase all comments");
 
 /* Map privileges */
 
@@ -279,6 +280,7 @@ insert into userActionPrivilege(privilegeId,userActionId) values(1,23);
 insert into userActionPrivilege(privilegeId,userActionId) values(1,24);
 insert into userActionPrivilege(privilegeId,userActionId) values(1,25);
 insert into userActionPrivilege(privilegeId,userActionId) values(1,26);
+insert into userActionPrivilege(privilegeId,userActionId) values(1,27);
 
 /* Editor */
 insert into userActionPrivilege(privilegeId,userActionId) values(2,1);

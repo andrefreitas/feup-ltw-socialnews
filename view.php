@@ -171,23 +171,30 @@ function printComments($newsid){
 	$comments=array_reverse($comments);
 
 	echo "<h4 class=\"commentstitle\">Comments</h4>";
-
-	// Comment form
-	echo "<textarea rows=\"4\" cols=\"50\" placeholder=\"Insert a new comment\" class=\"newcomment\">";
+	// New Comment
+	if($data->userCan($_SESSION['privilegeid'],"createComment")){
+	echo "<form><textarea rows=\"4\" cols=\"50\" placeholder=\"Insert a new comment\" class=\"newcomment\" name=\"content\">";
     echo "</textarea>"; 
+    echo "<button type=\"button\" class=\"addcommentbt\" onclick=\"addComment(this,".$newsid.",".$_SESSION['user']['id'].",'".$_SESSION['user']['name']."')\"> Add comment </button></form>";
+	}
 
-    echo "<button type=\"button\" class=\"addcommentbt\"> Add comment </button>";
+	$newsauthor=$data->getNewsAuthor($newsid);
 
+    // Comment list
     echo "<div class=\"commentslist\">\n";
-    // Print every comment
 	foreach($comments as $row){
 		$datetime= new DateTime($row['datePosted']);
 		$author=$data->getCommentAuthor($row['id']);
-		$author=$author['name'];
 
 		echo "<div class=\"commenti\">";
-		echo "<span class=\"commentauthor\">".$author."</span>";
-		echo "<span class=\"commentdate\"> at ".$datetime->format('Y/m/d H:i:s')."</span><br/>";
+		echo "<span class=\"commentauthor\">".$author['name']."</span>";
+		echo "<span class=\"commentdate\"> at ".$datetime->format('Y/m/d H:i:s')."</span>";
+
+		if(isset($_SESSION['user']) and ($data->userCan($_SESSION['privilegeid'],"editAllComments") or $_SESSION['user']['id']==$author['id'] or $_SESSION['user']['id']==$newsauthor['id'])){
+		echo "<span class=\"editcomment\">Edit</span>";
+		echo "<span class=\"deletecomment\">Delete</span><br/>";
+		}
+
 		echo "<div class=\"commentcont\">".$row['content']."</div>";
 		echo "</div>";
 	}

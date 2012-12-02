@@ -399,3 +399,40 @@ function favoriteNews(obj,userid,newsid){
    }
 
 }
+
+function addComment(obj,newsid,userid,author){
+	var form=obj.parentNode;
+	var content=form.elements["content"].value;
+	console.log(content);
+
+
+	// Process request
+	var requestURL="api/addcomment.php?apikey=jabana123&newsid="+newsid+"&userid="+userid+"&content="+content;
+	var xmlHttp = null;
+	xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET",requestURL, false );
+	xmlHttp.send( null );
+	var answer=JSON.parse(xmlHttp.responseText); 
+	var commentid=-1;
+   	if(answer.Answer=="Ok"){
+   		commentid=answer.id;
+   	} else{
+   		return false;
+   	}
+
+
+	// Add to the commentlist
+	var commentslist=document.getElementsByClassName("commentslist")[0];
+	var comment=document.createElement("div");
+	console.log(commentslist.innerHTML);
+	comment.setAttribute("class","commenti");
+	var insidehtml="<span class=\"commentauthor\">"+author+"</span>";
+	insidehtml=insidehtml+"<span class=\"commentdate\"> just now</span>";
+	insidehtml=insidehtml+"<span class=\"editcomment\">Edit</span>";
+	insidehtml=insidehtml+"<span class=\"deletecomment\">Delete</span><br/>";
+	insidehtml=insidehtml+"<div class=\"commentcont\">"+content+"</div>";
+	comment.innerHTML=insidehtml;
+
+	commentslist.insertBefore(comment,commentslist.firstChild);
+
+}
