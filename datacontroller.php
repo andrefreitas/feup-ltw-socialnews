@@ -262,6 +262,8 @@ class DataController{
 		$keyword=strtolower($keyword);
 		$topnews=$this->getTopNews();
 
+		if(strlen($keyword)==0) return Array();
+
 		$newsfound=Array();
 		foreach($topnews as $row){
 				// All to lowercase
@@ -276,7 +278,7 @@ class DataController{
 				$foundkeyword=0;
 
 				// Check if found and fetch the substring
-				if(in_array($keyword,$titleArray)){
+				if(strpos($title,$keyword)){
 					$pos=strpos($title,$keyword);
 					$startpos=$pos-15;
 					if($startpos<0) $startpos=0;
@@ -287,7 +289,7 @@ class DataController{
 					$substringfound=substr($title,$startpos,$len);
 					$foundkeyword=1;
 				}
-				else if(in_array($keyword,$contentArray)){
+				else if(strpos($content,$keyword)){
 					$pos=strpos($content,$keyword);
 					$startpos=$pos-15;
 					if($startpos<0) $startpos=0;

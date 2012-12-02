@@ -13,11 +13,14 @@
   			// Handler
   			function(data) 
   			{
-    			console.log(data.results);
     			
-    			putResults(data.data);
-    			if(data.results==0) $('.searchresults').fadeOut(200);
-    			else $('.searchresults').fadeIn(800);
+    	
+    			if(data==null || data.results==0) $('.searchresults').fadeOut(200);
+    			else {
+            console.log(data.results);
+            putResults(data.data);
+            $('.searchresults').fadeIn(800);
+          }
   			}
   			);
 
