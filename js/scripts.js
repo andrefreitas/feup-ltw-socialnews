@@ -356,12 +356,22 @@ function saveNewsToDatabase(serverid,obj){
 }
 
 function deleteServer(obj,serverid){
-	alert(serverid);
 	var answer =confirm("Are you sure you want to delete this server?");
 	if(answer==false)return false;
 
+	// Process request
+	var requestURL="api/deleteserver.php?apikey=jabana123&id="+serverid;
+	var xmlHttp = null;
+	xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET",requestURL, false );
+	xmlHttp.send( null );
+	var answer=JSON.parse(xmlHttp.responseText); 
+   	if(answer.Answer!="Ok") return false;
+
+	// Remove from DOM
 	var serveritem=obj.parentNode;
 	serveritem.parentNode.removeChild(serveritem);
+
 }
 
 function favoriteNews(obj,userid,newsid){

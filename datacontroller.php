@@ -435,8 +435,10 @@ class DataController{
 		$this->dataBase->query("update comment set content=\"".$content."\" where id=".$id);
 	}
 
+	function deleteServer($id){
+		$this->dataBase->query("delete from newsserver where serverid=".$id);
+	}
+
 };
-
 $data=new DataController($_database,$_siteurl);
-
 ?>
