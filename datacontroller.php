@@ -98,14 +98,16 @@ class DataController{
 		return $news;
 	}
 	
+	public function getCategoryNewsById($categoryid){
+		$news=$this->dataBase->query('SELECT * from news where categoryid='.$categoryid);
+		$news=$news->fetchAll(PDO::FETCH_ASSOC);
+		return $news;
+	}
+
 	public function getActiveCategories(){
-		$categories=$this->dataBase->query('SELECT name from activecategories');
+		$categories=$this->dataBase->query('SELECT * from activecategories');
 		$categories=$categories->fetchAll(PDO::FETCH_ASSOC);
-		$aux=Array();
-		foreach($categories as $row){
-			$aux[]=$row['name'];
-		}
-		return $aux;
+		return $categories;
 	}
 	
 	public function getNewsCategory($newsid){

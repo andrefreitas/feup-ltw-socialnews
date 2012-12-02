@@ -17,7 +17,7 @@ function GetMonthString($n){
 function printCategories($categories){
 	echo"\n";
 	foreach($categories as $row){
-		echo "                    <li><a href=\"#\">".$row."</a></li>\n";
+		echo "                    <li><a href=\"categorynews.php?id=".$row['id']."\">".$row['name']."</a></li>\n";
 	}
 }
 function printTopNews($topnews){
@@ -201,4 +201,9 @@ function printComments($newsid){
 	echo "</div>";
 }
 
+function printCategoryNews($id){
+	global $data;
+	$news= $data->getCategoryNewsById($id);
+	printNewsList($news);
+}
 ?>
