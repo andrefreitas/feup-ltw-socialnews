@@ -1177,7 +1177,7 @@ html, body {
 
 .profilebox{
 	margin-top:20px;
-	overflow:auto;
+	height:170px;
 	margin-bottom:20px;
 }
 
@@ -1185,7 +1185,7 @@ html, body {
 	width:220px;
 	float:left;
 	margin-left:20px;
-	height:100px;
+	
 }
 
 .profilebox .email{
@@ -1222,6 +1222,7 @@ html, body {
 .profilebox .aboutme{
 	border-left:dashed 1px #ccc;
 	height:135px;
+	width:200px;
 	float:left;
 	padding-left:20px;
 	margin-left:20px;
@@ -1248,3 +1249,39 @@ html, body {
 }
 
 
+.profilebox button{
+	margin-top:5px;
+	border-radius:4px;
+	background:#d1382d;
+	padding:5px 7px 5px 7px;
+	color:#fff;
+	border:none;
+	font-size:12px;
+	text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+	box-shadow: 0 1px 5px rgba(0,0,0,.4) inset;
+}
+.profilebox button:hover{
+	background: #e54040;
+
+}
+
+.profilebox .aboutmeinput{
+	padding:10px;
+	width:100%;
+	border-radius:4px;
+	border:solid 1px #ccc;
+}
+
+.profilebox .nameinput{
+	height:20px;
+	font-size:12px;
+	border-radius:4px;
+	border:solid 1px #ccc;
+}
+
+.profilebox .emailinput{
+	height:20px;
+	font-size:12px;
+	border-radius:4px;
+	border:solid 1px #ccc;
+}

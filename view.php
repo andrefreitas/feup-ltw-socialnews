@@ -247,20 +247,28 @@ function printUserProfile($id){
 	$favorites=$data->getFavoriteNews($id);
 	// User 
 
-	echo "<div class=\"profilebox\">";
+	echo "<div class=\"profilebox\"><form>";
 	echo "<div class=\"rolethumb\"><img src=\"imgs/role".$role.".png\"/></div>";
 	
 	// Stats
 	echo "<div class=\"profiledata\">\n";
-	echo "<h3>".$user['name']."</h3>";
-	echo "<span class=\"email\"> ".$user['email']."</span><br/>";
+	echo "<h3>".$user['name'];
+
+	if(isset($_SESSION['user']) and ($data->userCan($_SESSION['privilegeid'],"editUsers") or $_SESSION['user']['id']==$id)){
+		echo "<button type=\"button\" onclick=\"editProfile(this,$id)\">Edit Profile</button>";
+	}
+
+
+	echo "</h3>";
+	echo "<span class=\"email\">".$user['email']."</span><br/>";
 	echo "<div class=\" stat totalcomments\">".sizeof($comments)." commentaries</div>";
 	echo "<div class=\"stat totalarticles\">".sizeof($articles)." articles written</div>";
-	echo "<div class=\"stat totalfavorites\">".sizeof($favorites)." favorites news</div>";
+	echo "<div class=\"stat totalfavorites\">".sizeof($favorites)." favorite news</div>";
 	echo "</div>";
 
 	// About me
 	echo "<div class=\"aboutme\"> <h3>About me </h3>".$user['about']."</div>";
+	echo "</form>";
 	echo "</div>";
 
 	// Print Comments

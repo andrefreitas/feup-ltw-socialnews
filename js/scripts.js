@@ -430,3 +430,51 @@ function deleteArticle(obj,id){
 	}
 
 }
+
+function editProfile(obj,userid){
+
+	// Get Name, Email and About Me values
+	var h3name=obj.parentNode;
+	var name=h3name.firstChild;
+	var profiledata=h3name.parentNode;
+	var email=profiledata.getElementsByClassName("email")[0];
+	var form=profiledata.parentNode;
+	var aboutmediv=form.getElementsByClassName("aboutme")[0];
+	var aboutme=aboutmediv.lastChild;
+
+	//Put a form
+	var namei=document.createElement("input");
+	namei.setAttribute("type","text");
+	namei.setAttribute("name","name");
+	namei.setAttribute("class","nameinput");
+	namei.setAttribute("value",name.data);
+	profiledata.replaceChild(namei, h3name);
+
+	var emaili=document.createElement("input");
+	emaili.setAttribute("type","text");
+	emaili.setAttribute("name","email");
+	emaili.setAttribute("class","emailinput");
+	emaili.setAttribute("value",email.innerHTML);
+	profiledata.replaceChild(emaili, email);
+
+	var aboutmei=document.createElement("textarea");
+	aboutmei.setAttribute("class","aboutmeinput");
+	aboutmei.setAttribute("name","aboutme");
+	aboutmei.innerHTML=aboutme.data;
+	aboutmediv.replaceChild(aboutmei, aboutme);
+
+	var button=document.createElement("button");
+	button.setAttribute("type","button");
+	button.setAttribute("onclick","saveProfile("+userid+")");
+	button.innerHTML="Save Profile";
+	aboutmediv.appendChild(button);
+
+}
+
+function saveProfile(userid){
+	var profilebox=document.getElementsByClassName("profilebox")[0];
+	var form=profilebox.getElementsByTagName("form")[0];
+	console.log(form.elements["name"].value);
+	console.log(form.elements["email"].value);
+	console.log(form.elements["aboutme"].value);
+}
