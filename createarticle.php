@@ -9,15 +9,7 @@
             $cats=$data->getCategories();
         ?>
         <link rel="stylesheet" href="css/tinyeditor.css">
-        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="css/tagit/jquery.tagit.css">
-        <link href="css/tagit/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
-        <script> var sampleTags = <?php echo json_encode($tags); ?> </script>
-        <script src="js/scripts.js"></script> 
         <script src="js/tiny.editor.packed.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/tag-it.js" type="text/javascript" charset="utf-8"></script>
         
     </head>
     <body>
@@ -57,9 +49,7 @@
 						?>
                      </select><br/>
                      </div>
-                     <input name="tags" id="mySingleField" name="tags" value="" hidden="true"> 
-                     Tags:
-                     <ul id="singleFieldTags"></ul>
+                       Tags(ex. world,sports): <input name="tags" id="mySingleField" name="tags" value=""> 
                 	<input type="submit" class="button" value="Create Article" >
                 </form>
                 
@@ -78,7 +68,7 @@
                             'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink', '|', 'print'],
                         footer: true,
                         fonts: ['Segoe UI','Verdana','Arial','Georgia','Trebuchet MS'],
-                        xhtml: true,
+                        xhtml: false,
                         bodyid: 'editor',
                         footerclass: 'tinyeditor-footer',
                         toggle: {text: 'source', activetext: 'wysiwyg', cssclass: 'toggle'},

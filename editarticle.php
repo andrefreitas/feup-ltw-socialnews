@@ -60,7 +60,7 @@
                         ?>
                      </select><br/>
                      </div>
-                    Tags: <input name="tags" id="mySingleField" name="tags" value="<?php  echo($tags);?>"> 
+                      Tags(ex. world,sports):<input name="tags" id="mySingleField" name="tags" value="<?php  echo($tags);?>"> 
                     <input name="id" value="<?php echo $article['id'] ;?>" hidden="true"> 
                     <input type="submit" class="button" value="Edit Article" >
                 </form>
@@ -80,7 +80,7 @@
                             'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink', '|', 'print'],
                         footer: true,
                         fonts: ['Segoe UI','Verdana','Arial','Georgia','Trebuchet MS'],
-                        xhtml: true,
+                        xhtml: false,
                         bodyid: 'editor',
                         footerclass: 'tinyeditor-footer',
                         toggle: {text: 'source', activetext: 'wysiwyg', cssclass: 'toggle'},
