@@ -511,6 +511,12 @@ class DataController{
 		return $this->getNewsById($newsid);
  	}
 
+ 	function getLastComments(){
+ 		$comments=$this->dataBase->query("SELECT * FROM latestComments");
+		$comments=$comments->fetchAll(PDO::FETCH_ASSOC);
+		return $comments;
+ 	}
+
 };
 $data=new DataController($_database,$_siteurl);
 ?>

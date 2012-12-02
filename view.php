@@ -278,5 +278,16 @@ function printUserProfile($id){
 	printCommentsList($comments);
 }
 
+function printLastComments($len){
+	global $data;
+	$comments=$data->getLastComments();
 
+	$comments=array_slice($comments,0,$len);
+	echo "<ul>\n";
+	foreach($comments as $row){
+		$news=$data->getCommentNews($row['id']);
+		echo "<li><a href=\"article.php?url=".$news['url']."\">".$row['content']."</a></li>\n";
+	}
+	echo "</ul>";
+}
 ?>

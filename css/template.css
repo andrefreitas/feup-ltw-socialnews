@@ -241,12 +241,36 @@
 
 .comments{
 	width: 200px;
-	height: 150px;
 	background: #333;
 	box-shadow: 6px 3px 6px rgba(0,0,0,0.1) inset;
 	border:solid 1px #000000;
 	border-top:none;
 	border-left:none;
+	color:#fff;
+}
+
+
+.comments ul{
+
+	font-size:12px;
+}
+
+.comments ul li{
+	border-bottom:dashed 1px #444;
+	padding:10px 15px 10px 15px;
+}
+
+.comments a{
+	text-decoration:none;
+}
+
+.comments a:hover{
+	text-decoration:underline;
+}
+
+
+.comments ul>li:last-child{
+	border-bottom:none;
 }
 
 .comments h3{
