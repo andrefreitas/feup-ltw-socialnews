@@ -429,10 +429,28 @@ function addComment(obj,newsid,userid,author){
 	var insidehtml="<span class=\"commentauthor\">"+author+"</span>";
 	insidehtml=insidehtml+"<span class=\"commentdate\"> just now</span>";
 	insidehtml=insidehtml+"<span class=\"editcomment\">Edit</span>";
-	insidehtml=insidehtml+"<span class=\"deletecomment\">Delete</span><br/>";
+	insidehtml=insidehtml+"<span class=\"deletecomment\" onclick=\"deleteComment(this,"+commentid+")\">Delete</span><br/>";
 	insidehtml=insidehtml+"<div class=\"commentcont\">"+content+"</div>";
 	comment.innerHTML=insidehtml;
 
 	commentslist.insertBefore(comment,commentslist.firstChild);
+
+}
+
+function deleteComment(obj,id){
+	var answer =confirm("Do you really want to delete this comment??");
+	if(answer==false) return false;
+
+	// Process request
+	var requestURL="api/deletecomment.php?apikey=jabana123&id="+id;
+	xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET",requestURL, false );
+	xmlHttp.send( null );
+	var answer=JSON.parse(xmlHttp.responseText); 
+	if(answer.Answer!="Ok") return false;
+   	
+   	// Delete from dom
+   	var comment=obj.parentNode;
+   	comment.parentNode.removeChild(comment);
 
 }

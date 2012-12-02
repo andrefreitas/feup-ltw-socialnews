@@ -192,7 +192,7 @@ function printComments($newsid){
 
 		if(isset($_SESSION['user']) and ($data->userCan($_SESSION['privilegeid'],"editAllComments") or $_SESSION['user']['id']==$author['id'] or $_SESSION['user']['id']==$newsauthor['id'])){
 		echo "<span class=\"editcomment\">Edit</span>";
-		echo "<span class=\"deletecomment\">Delete</span><br/>";
+		echo "<span class=\"deletecomment\" onclick=\"deleteComment(this,".$row['id'].")\">Delete</span><br/>";
 		}
 
 		echo "<div class=\"commentcont\">".$row['content']."</div>";
