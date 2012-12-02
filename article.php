@@ -33,7 +33,7 @@
                         echo "</h1>";
     					$datetime= new DateTime($news['datePosted']);
     					$author= $data->getNewsAuthor($news['id']);
-    					echo "<span class=\"info\"> Posted on ".$datetime->format('Y/m/d H:i:s')." by ".$author['name']."</span>";
+    					echo "<span class=\"info\"> Posted on ".$datetime->format('Y/m/d H:i:s')." by <a href=\"userprofile.php?id=".$author['id']."\">".$author['name']."</a></span>";
 
                         // Check if can edit news
 

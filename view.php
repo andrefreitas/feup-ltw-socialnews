@@ -192,7 +192,7 @@ function printComments($newsid){
 		$author=$data->getCommentAuthor($row['id']);
 
 		echo "<div class=\"commenti\">";
-		echo "<span class=\"commentauthor\">".$author['name']."</span>";
+		echo "<span class=\"commentauthor\"><a href=\"userprofile.php?id=".$author['id']."\">".$author['name']."</a></span>";
 		echo "<span class=\"commentdate\"> at ".$datetime->format('Y/m/d H:i:s')."</span>";
 
 		if(isset($_SESSION['user']) and ($data->userCan($_SESSION['privilegeid'],"editAllComments") or $_SESSION['user']['id']==$author['id'] or $_SESSION['user']['id']==$newsauthor['id'])){
