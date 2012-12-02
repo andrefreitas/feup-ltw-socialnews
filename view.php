@@ -191,7 +191,7 @@ function printComments($newsid){
 		echo "<span class=\"commentdate\"> at ".$datetime->format('Y/m/d H:i:s')."</span>";
 
 		if(isset($_SESSION['user']) and ($data->userCan($_SESSION['privilegeid'],"editAllComments") or $_SESSION['user']['id']==$author['id'] or $_SESSION['user']['id']==$newsauthor['id'])){
-		echo "<span class=\"editcomment\">Edit</span>";
+		echo "<span class=\"editcomment\" onclick=\"editComment(this,".$row['id'].")\">Edit</span>";
 		echo "<span class=\"deletecomment\" onclick=\"deleteComment(this,".$row['id'].")\">Delete</span><br/>";
 		}
 

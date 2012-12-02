@@ -431,7 +431,12 @@ class DataController{
 		return $author->fetch(PDO::FETCH_ASSOC);
 	}
 
+	function editComment($id,$content){
+		$this->dataBase->query("update comment set content=\"".$content."\" where id=".$id);
+	}
+
 };
 
 $data=new DataController($_database,$_siteurl);
+
 ?>

@@ -9,12 +9,9 @@ if(isset($_POST['email']) and isset($_POST['password'])){
 		 header('Location: ' . $_SERVER['HTTP_REFERER']);
 	}
 	else {
-		if(strpos($_SERVER['HTTP_REFERER'],"?")){
-			$_SERVER['HTTP_REFERER']=explode("?",$_SERVER['HTTP_REFERER']);
-			$_SERVER['HTTP_REFERER']=$_SERVER['HTTP_REFERER'][0];
-		}
-
-		 header('Location: ' . $_SERVER['HTTP_REFERER']."?_alert=Invalid Login");
+		 echo "<script> alert(\"Invalid Login\");
+		 window.location=\"".$_SERVER['HTTP_REFERER']."\";
+		 </script>";
 	}
 }
 ?>

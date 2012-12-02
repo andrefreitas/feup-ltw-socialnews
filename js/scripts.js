@@ -404,7 +404,7 @@ function addComment(obj,newsid,userid,author){
 	var form=obj.parentNode;
 	var content=form.elements["content"].value;
 	console.log(content);
-
+	if(content.length==0) return false;
 
 	// Process request
 	var requestURL="api/addcomment.php?apikey=jabana123&newsid="+newsid+"&userid="+userid+"&content="+content;
@@ -428,7 +428,7 @@ function addComment(obj,newsid,userid,author){
 	comment.setAttribute("class","commenti");
 	var insidehtml="<span class=\"commentauthor\">"+author+"</span>";
 	insidehtml=insidehtml+"<span class=\"commentdate\"> just now</span>";
-	insidehtml=insidehtml+"<span class=\"editcomment\">Edit</span>";
+	insidehtml=insidehtml+"<span class=\"editcomment\" onclick=\"editComment(this,"+commentid+")\">Edit</span>";
 	insidehtml=insidehtml+"<span class=\"deletecomment\" onclick=\"deleteComment(this,"+commentid+")\">Delete</span><br/>";
 	insidehtml=insidehtml+"<div class=\"commentcont\">"+content+"</div>";
 	comment.innerHTML=insidehtml;
@@ -452,5 +452,24 @@ function deleteComment(obj,id){
    	// Delete from dom
    	var comment=obj.parentNode;
    	comment.parentNode.removeChild(comment);
+
+}
+
+function editComment(obj,id){
+	var commentbox=obj.parentNode;
+	var oldcontent=commentbox.getElementsByClassName("commentcont")[0];
+	var newcontent=prompt("Edit content",oldcontent.innerHTML);
+	
+
+	// Process request
+	var requestURL="api/editcomment.php?apikey=jabana123&id="+id+"&content="+newcontent;
+	xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET",requestURL, false );
+	xmlHttp.send( null );
+	var answer=JSON.parse(xmlHttp.responseText); 
+	if(answer.Answer!="Ok") return false;
+
+	// Update
+	oldcontent.innerHTML=newcontent;
 
 }
