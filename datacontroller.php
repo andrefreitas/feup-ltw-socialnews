@@ -14,7 +14,8 @@ class DataController{
 	}
 	
 	public function getNews(){
-		return $this->dataBase->query('SELECT * FROM news')->fetchAll(PDO::FETCH_ASSOC);
+		$news=$this->dataBase->query('SELECT * FROM news');
+		return $news->fetchAll(PDO::FETCH_ASSOC);
 	}
 
 	public function getUsers(){

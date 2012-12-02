@@ -1313,3 +1313,35 @@ html, body {
 .tagslisti{
 	padding:5px;
 }
+
+.justnownews{
+	position:fixed;
+	top:30px;
+	right:0px;
+	height:70px;
+	padding:6px 15px 0px 10px;
+	border-right:none;
+	background: #d1382d;
+	box-shadow: 6px 3px 6px rgba(0,0,0,0.1) inset;
+	border:solid 1px #a21a1a;
+	color:#fff;
+	transition: width 5s,background 3.6s ease-in-out;
+   -moz-transition: width 5s,background 3.6s ease-in-out;
+   -webkit-transition: width 5s,background 3.6s ease-in-out;
+}
+
+.justnownews a{
+	text-decoration: none;
+	color:#fff;
+}
+
+.justnownews a:hover{
+	text-decoration: underline;
+	color:#fff;
+}
+
+.justnownews h2{
+	text-transform:uppercase;
+	text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+	font-weight:bold;
+}

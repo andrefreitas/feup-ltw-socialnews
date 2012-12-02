@@ -564,8 +564,47 @@ function saveTags(obj,newsid){
 	xmlHttp = new XMLHttpRequest();
 	xmlHttp.open( "GET",requestURL, false );
 	xmlHttp.send( null );
-	document.location.reload(true);
 	var answer=JSON.parse(xmlHttp.responseText); 
 	if(answer.Answer!="Ok") return false;
 	else document.location.reload(true);
 }
+
+function notifyLastNews(title,url){
+	// First check if notify exists
+	var previous=document.getElementsByClassName("justnownews");
+	if(previous.length>0){
+		var pnode=previous[0].parentNode;
+		for(var i=0; i<previous.length; i++){
+		pnode.removeChild(previous[i]);
+		i--;
+		}
+	}
+
+	var notify=document.createElement("div");
+	notify.setAttribute("class","justnownews");
+	notify.innerHTML="<h2>Fresh News</h2> <a href=\""+url+"\">"+title+"</a>";
+	var footer=document.getElementById("footer");
+	footer.appendChild(notify);
+
+}
+function checkNews(){
+	// Do request
+	requestURL="api/latestnews.php?apikey=jabana123&len=1";
+	var xmlHttp = null;
+	xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET",requestURL, false );
+	xmlHttp.send( null );
+	var answer=JSON.parse(xmlHttp.responseText); 
+	if(answer.Answer!="Ok") return false;
+
+	// Fetch latest news date, title and url
+	var lastDate=new Date(answer.Data[0].datePosted);
+	var url="article.php?url="+answer.Data[0].url;
+	var title=answer.Data[0].title;
+	var dateNow=new Date();
+	var diff= dateNow-lastDate;
+	diff=Math.abs(diff/1000);
+	if(diff<2) notifyLastNews(title,url);
+
+}
+var checkNewsInterval = setInterval(checkNews, 1000);
