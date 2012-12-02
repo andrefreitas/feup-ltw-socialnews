@@ -38,6 +38,7 @@ create table user(
 	password text,
 	privilegeId integer,
 	picture text,
+	about text,
 	foreign key(privilegeId) references privilege(id)
 );
 

@@ -6,40 +6,40 @@ insert into serverInfo(name) values("T6G1");
 /* Create users */
 
 /* Admin - Password: "Jk1L93221" */ 
-insert into user(name, email, password,privilegeId) 
-	values("André Freitas","p.andrefreitas@gmail.com","62761b7bce5cfa40e2280a02edf185f119aaaf54",1);
+insert into user(name, email, password,privilegeId,about) 
+	values("André Freitas","p.andrefreitas@gmail.com","62761b7bce5cfa40e2280a02edf185f119aaaf54",1,"I am from Madeira and I like sports");
 
 /* Admin - Password: "mlaikem21" */ 
-insert into user(name, email, password,privilegeId) 
-	values("Arkadiusz Gorgolewski","arkadiuszgorgolewski@gmail.com","9a7fce5daa7fb717e0c96604d85ff8924c5b339a",1);
+insert into user(name, email, password,privilegeId,about)
+	values("Arkadiusz Gorgolewski","arkadiuszgorgolewski@gmail.com","9a7fce5daa7fb717e0c96604d85ff8924c5b339a",1,"I am Poland and I like Mayo");
 
 /* User - Password: "j3j2of2f23g" */ 
-insert into user(name, email, password,privilegeId) 
-	values("Peter Griffin","peter@fakemail.com","675ef05929a74c4f45a9912fdebdd5ee5da8585a",3);
+insert into user(name, email, password,privilegeId,about)
+	values("Peter Griffin","peter@fakemail.com","675ef05929a74c4f45a9912fdebdd5ee5da8585a",3,"Hello I am a fictional person");
 
 /* User - Password: "k5hab4hckuy" */ 
-insert into user(name, email, password,privilegeId) 
-	values("Sebastian Loeb","sebastian@fakemail.com","ac155a353b17958f9222559819ca216df88fb49f",3);
+insert into user(name, email, password,privilegeId,about)
+	values("Sebastian Loeb","sebastian@fakemail.com","ac155a353b17958f9222559819ca216df88fb49f",3,"Usually I drive cars and stuff");
 
 /* User - Password: "pybec321d" */ 
-insert into user(name, email, password,privilegeId) 
-	values("Carl Lemon","carl@fakemail.com","a99fbf53e841abb0be1bfad2bed949d9780e65b6",3);
+insert into user(name, email, password,privilegeId,about)
+	values("Carl Lemon","carl@fakemail.com","a99fbf53e841abb0be1bfad2bed949d9780e65b6",3,"I like lemons, is just that.");
 
 /* User - Password: "mbHg523hh1" */ 
-insert into user(name, email, password,privilegeId) 
-	values("Tom Adams","tom@fakemail.com","b6fcf77bc898cd55dd425b8a17c6b94463730f9c",3);
+insert into user(name, email, password,privilegeId,about)
+	values("Tom Adams","tom@fakemail.com","b6fcf77bc898cd55dd425b8a17c6b94463730f9c",3,"I am a computer hacker and I hack a lot of websites");
 
 /* Editor - Password: "Jn2ghp3hJ2f" */ 
-insert into user(name, email, password,privilegeId) 
-	values("Sara Lee","sara@fakemail.com","df09c9a4cdd82877f44a7ab14f86afd0b9d0f135",2);
+insert into user(name, email, password,privilegeId,about)
+	values("Sara Lee","sara@fakemail.com","df09c9a4cdd82877f44a7ab14f86afd0b9d0f135",2,"Mixed of China and Britain, I love to write");
 
 /* Editor - Password: "Uug2u42gsd" */ 
-insert into user(name, email, password,privilegeId) 
-	values("Steve Jacob","steve@fakemail.com","5b19f18fe57040b2f6cb8011f1f23b34d47d7d54",2);
+insert into user(name, email, password,privilegeId,about)
+	values("Steve Jacob","steve@fakemail.com","5b19f18fe57040b2f6cb8011f1f23b34d47d7d54",2,"I invented the iStuff and I hate Windows");
 
 /* Editor - Password: "Jjh23kg22d" */ 
-insert into user(name, email, password,privilegeId) 
-	values("Alexander Mason","alexander@fakemail.com","398d07bd476b017cc62b2e1758c2887d7b72f7ed",2);
+insert into user(name, email, password,privilegeId,about)
+	values("Alexander Mason","alexander@fakemail.com","398d07bd476b017cc62b2e1758c2887d7b72f7ed",2,"I don't want to describe myself. ");
 
 /* Categories */
 

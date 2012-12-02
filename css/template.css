@@ -1177,18 +1177,22 @@ html, body {
 
 .profilebox{
 	margin-top:20px;
+	overflow:auto;
+	margin-bottom:20px;
 }
 
 .profiledata{
-	width:300px;
+	width:220px;
 	float:left;
 	margin-left:20px;
+	height:100px;
 }
 
 .profilebox .email{
 	background:url(../imgs/email.png) no-repeat;
-	background-position:0px 5px;
+	background-position:0px 2px;
 	padding-left:20px;
+	font-size:13px;
 }
 
 .profilebox .stat{
@@ -1214,3 +1218,33 @@ html, body {
 	margin-top:5px;
 
 }
+
+.profilebox .aboutme{
+	border-left:dashed 1px #ccc;
+	height:135px;
+	float:left;
+	padding-left:20px;
+	margin-left:20px;
+
+}
+
+.commentlist .commenti .where{
+	font-size:12px;
+	color:#d1382d;
+	font-style:italic;
+}
+
+.commentlist .commenti .where a{
+	color:#d1382d;
+	text-decoration:none;
+}
+
+.commentlist .commenti .where a:hover{
+	text-decoration:underline;
+}
+
+.commentlist .commenti{
+	margin:0;
+}
+
+

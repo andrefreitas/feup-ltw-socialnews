@@ -496,6 +496,13 @@ class DataController{
 		$comments=$comments->fetchAll(PDO::FETCH_ASSOC);
 		return $comments;
  	}
+
+ 	function getCommentNews($commentid){
+ 		$newsid=$this->dataBase->query('SELECT newsid FROM comment where id='.$commentid);
+		$newsid=$newsid->fetch(PDO::FETCH_ASSOC);
+		$newsid=$newsid['newsId'];
+		return $this->getNewsById($newsid);
+ 	}
 };
 $data=new DataController($_database,$_siteurl);
 ?>

@@ -225,6 +225,19 @@ function printSearchResults($word){
 	printNewsList($news);
 }
 
+function printCommentsList($comments){
+	global $data;
+	echo "<div class=\"commentlist\"/>";
+	foreach($comments as $row){
+		$news=$data->getCommentNews($row['id']);
+		echo "<div class=\"commenti\">";
+		echo "<span class=\"ccontent\">\"".$row['content']."\"</span><br/>";
+		echo "<span class=\"where\"> At <a href=\"article.php?url=".$news['url']."\">".$news['title']."</a></span>";
+		echo "</div>\n";
+	}
+	echo "</div>";
+}
+
 function printUserProfile($id){
 	global $data;
 	$user=$data->getUserByid($id);
@@ -236,17 +249,24 @@ function printUserProfile($id){
 
 	echo "<div class=\"profilebox\">";
 	echo "<div class=\"rolethumb\"><img src=\"imgs/role".$role.".png\"/></div>";
+	
+	// Stats
 	echo "<div class=\"profiledata\">\n";
 	echo "<h3>".$user['name']."</h3>";
 	echo "<span class=\"email\"> ".$user['email']."</span><br/>";
-
-	// Stats
 	echo "<div class=\" stat totalcomments\">".sizeof($comments)." commentaries</div>";
 	echo "<div class=\"stat totalarticles\">".sizeof($articles)." articles written</div>";
-	echo "<div class=\"stat totalfavorites\">".sizeof($favorites)." favorites</div>";
-
-	echo "</div>";
+	echo "<div class=\"stat totalfavorites\">".sizeof($favorites)." favorites news</div>";
 	echo "</div>";
 
+	// About me
+	echo "<div class=\"aboutme\"> <h3>About me </h3>".$user['about']."</div>";
+	echo "</div>";
+
+	// Print Comments
+	echo "<h3>Latest comments</h3>";
+	printCommentsList($comments);
 }
+
+
 ?>
