@@ -25,15 +25,17 @@ function printTopNews($topnews){
 	
 	for($i=0; $i<sizeof($topnews) and $i<4;$i++){						
 		$news=$topnews[$i];
-		$thumbnail=$_thumbspath.$news['thumbnail'];
+		if(strlen($news['thumbnail'])>0)
+			$thumbnail=$_thumbspath.$news['thumbnail'];
+		else 
+			$thumbnail=$_thumbspath."default.png";
 		$title=$news['title'];
 		$title=limitLen($title,40);
 		$category=$data->getNewsCategory($news['id']);
 		$date= new DateTime($news['datePosted']);
 		$day=$date->format('d');
 		$month=$date->format('m');
-		$month=GetMonthString($month);
-								
+		$month=GetMonthString($month);			
 		echo "<div class=\"latestnewsentry\">\n";
 		echo " <div class=\"thumbnail\" style=\"background: url('".$thumbnail."')\">";
 		echo "<div class=\"title\"><a href=\"article.php?url=".$news['url']."\">".$title."</a>";
