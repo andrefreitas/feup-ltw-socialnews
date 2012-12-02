@@ -217,4 +217,11 @@ function printAuthorNews($id){
 	$news= $data->getAllNewsFromAuthor($id);
 	printNewsList($news);
 }
+
+function printSearchResults($word){
+	global $data;
+	$news=Array();
+	$data->searchNews($word,$news);
+	printNewsList($news);
+}
 ?>

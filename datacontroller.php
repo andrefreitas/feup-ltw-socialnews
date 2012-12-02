@@ -258,7 +258,7 @@ class DataController{
 
 	}
 
-	public function searchNews($keyword){
+	public function searchNews($keyword,&$sqlnews=NULL){
 		$keyword=strtolower($keyword);
 		$topnews=$this->getTopNews();
 
@@ -306,6 +306,9 @@ class DataController{
 					$found['title']=$row['title'];
 					$found['excerpt']=$substringfound;
 					$newsfound[]=$found;
+					// Standard row format
+					$sqlnews[]=$row;
+					
 				}
 		}
 		return $newsfound;
