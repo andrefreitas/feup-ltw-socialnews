@@ -483,3 +483,26 @@ function editComment(obj,id){
 	oldcontent.innerHTML=newcontent;
 
 }
+
+function deleteArticle(obj,id){
+	var answer =confirm("Do you really want to delete this article??");
+	if(answer==false) return false;
+
+	// Process request
+	var requestURL="api/deletenews.php?apikey=jabana123&id="+id;
+	xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET",requestURL, false );
+	xmlHttp.send( null );
+	var answer=JSON.parse(xmlHttp.responseText); 
+	if(answer.Answer!="Ok") return false;
+
+	// Change DOM
+ 	if(window.location.href.toString().search("article.php")>0){
+		var article=document.getElementsByClassName("article")[0];
+		article.innerHTML="<h1>Article removed with success</h1>";
+	}else {
+		var newsi=obj.parentNode;
+		newsi.parentNode.removeChild(newsi);
+	}
+
+}

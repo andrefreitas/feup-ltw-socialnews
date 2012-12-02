@@ -1129,3 +1129,39 @@ html, body {
 	text-decoration:underline;
 	color:#d1382d;
 }
+/* Edit Article */
+.editarticlel{
+	background:url(../imgs/edit.png) no-repeat;
+	padding-left:20px;
+	margin-left:10px;
+	font-size:13px;
+}
+
+.editarticlel a{
+	color:#000;
+	text-decoration:none;
+}
+.editarticlel a:hover{
+	text-decoration:underline;
+	color:#d1382d;
+}
+
+.deletearticlel{
+	background:url(../imgs/delete.png) no-repeat;
+	padding-left:20px;
+	margin-left:5px;
+	font-size:13px;
+}
+
+.deletearticlel:hover{
+	text-decoration:underline;
+	color:#d1382d;
+}
+
+.newsi .editarticlel{
+	float:right;
+}
+
+.newsi .deletearticlel{
+	float:right;
+}

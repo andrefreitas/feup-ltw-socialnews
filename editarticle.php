@@ -23,13 +23,22 @@
                 <?php 
 
 
-                if(isset($_GET['id'])){
-                        $article=$data->getNewsById($_GET['id']);
-                        $catname=$data->getNewsCategory($_GET['id']);
-                        $tags=$data->getNewsTags($_GET['id']);
+                if(isset($_GET['id']) or isset($_POST['id'])) {
+                        if(isset($_GET['id'])) $newsid=$_GET['id'];
+                        else if(isset($_POST['id'])) $newsid=$_POST['id'];
+                        
+                        $article=$data->getNewsById($newsid);
+                        $catname=$data->getNewsCategory($newsid);
+                        $tags=$data->getNewsTags($newsid);
                         $tags=implode(",", $tags);
-                        $author=$data->getNewsAuthor($_GET['id']);
+                        $author=$data->getNewsAuthor($newsid);
+
                         if($data->userCan($_SESSION['privilegeid'],"editNews") or (isset($_SESSION['user']['id']) and $_SESSION['user']['id']==$author['id'])){
+                            // if user have the permission edit or show edit form
+                             if(isset($_POST['title']) and isset($_POST['content']) and isset($_POST['category']) and isset($_POST['tags'])){
+                                $data->editNews($_POST['id'],$_POST['title'],$_POST['content'],$_POST['tags'],$_POST['category']);
+                                echo "<h1>News changed successfuly. </h1>";
+                             } else{
                     ?>
 
                 <h1>Edit Article</h1>
@@ -52,6 +61,7 @@
                      </select><br/>
                      </div>
                     Tags: <input name="tags" id="mySingleField" name="tags" value="<?php  echo($tags);?>"> 
+                    <input name="id" value="<?php echo $article['id'] ;?>" hidden="true"> 
                     <input type="submit" class="button" value="Edit Article" >
                 </form>
                 
@@ -77,7 +87,7 @@
                         resize: {cssclass: 'resize'}
                     });
                 </script>
-                <?php }} ?>
+                <?php } }} ?>
                 </div>
                 <div class="sidebar">
                     <?php include_once 'userbox.php'; ?>  

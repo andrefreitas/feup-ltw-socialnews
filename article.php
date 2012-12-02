@@ -34,6 +34,14 @@
     					$datetime= new DateTime($news['datePosted']);
     					$author= $data->getNewsAuthor($news['id']);
     					echo "<span class=\"info\"> Posted on ".$datetime->format('Y/m/d H:i:s')." by ".$author['name']."</span>";
+
+                        // Check if can edit news
+
+                        if($data->userCan($_SESSION['privilegeid'],"editNews") or (isset($_SESSION['user']['id']) and $_SESSION['user']['id']==$author['id'])){
+                            echo "<span class=\"editarticlel\"><a href=\"editarticle.php?id=".$news['id']."\">Edit Article</a></span> <span class=\"deletearticlel\" onclick=\"deleteArticle(this,".$news['id'].")\">Delete</span>";
+                        }
+
+
     					echo "<div class=\"entry\"> ".$news['content']."</div>";
     					$tags=$data->getNewsTags($news['id']);
     					echo "<div class=\"alltags\">";

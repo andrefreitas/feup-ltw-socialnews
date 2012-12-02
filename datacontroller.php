@@ -471,6 +471,10 @@ class DataController{
 
 	}
 
+	function deleteNews($id){
+		$this->dataBase->query("delete from news where id=".$id);
+	}
+
 };
 $data=new DataController($_database,$_siteurl);
 ?>

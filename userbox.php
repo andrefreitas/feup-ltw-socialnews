@@ -19,7 +19,7 @@
             <?php if($data->userCan($_SESSION['privilegeid'],"seeFavoriteNews")){ ?><li class="favoritenews"><a href="myfavorites.php">My Favorite News</a></li> <?php }?>
             <?php if($data->userCan($_SESSION['privilegeid'],"createNews")){ ?><li class="mynews"><a href="newsbyauthor.php">My News</a></li> <?php }?>
             <?php if($data->userCan($_SESSION['privilegeid'],"editUsers")){ ?><li class="users"><a href="manageusers.php">Manage Users</a></li> <?php }?>
-            <?php if($data->userCan($_SESSION['privilegeid'],"editNews")){ ?><li class="managenews"><a href="managenews.php">Manage News</a></li> <?php }?>
+            <?php if($data->userCan($_SESSION['privilegeid'],"editNews") and false){ ?><li class="managenews"><a href="managenews.php">Manage News</a></li> <?php }?>
             <?php if($data->userCan($_SESSION['privilegeid'],"editNews")){ ?><li class="remoteservers"><a href="remoteservers.php">Remote Servers</a></li> <?php }?>
         </ul>
         </ul>

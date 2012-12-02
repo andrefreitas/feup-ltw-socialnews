@@ -153,6 +153,11 @@ function printNewsList($news){
         else echo "no";
         echo ".png\" class=\"favoriteicon\" onclick=\"favoriteNews(this,".$_SESSION['user']['id'].",".$row['id'].")\">";
         }
+        $author= $data->getNewsAuthor($row['id']);
+        if($data->userCan($_SESSION['privilegeid'],"editNews") or (isset($_SESSION['user']['id']) and $_SESSION['user']['id']==$author['id'])){
+            echo "<span class=\"editarticlel\"><a href=\"editarticle.php?id=".$row['id']."\">Edit Article</a></span> <span class=\"deletearticlel\" onclick=\"deleteArticle(this,".$row['id'].")\">Delete</span>";
+        }
+
 
 		echo "</div>\n";
 	}
