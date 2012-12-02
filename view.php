@@ -224,4 +224,29 @@ function printSearchResults($word){
 	$data->searchNews($word,$news);
 	printNewsList($news);
 }
+
+function printUserProfile($id){
+	global $data;
+	$user=$data->getUserByid($id);
+	$role=$data->getPrivilegeName($user['privilegeId']);
+	$comments=$data->getUserComments($id);
+	$articles=$data->getAllNewsFromAuthor($id);
+	$favorites=$data->getFavoriteNews($id);
+	// User 
+
+	echo "<div class=\"profilebox\">";
+	echo "<div class=\"rolethumb\"><img src=\"imgs/role".$role.".png\"/></div>";
+	echo "<div class=\"profiledata\">\n";
+	echo "<h3>".$user['name']."</h3>";
+	echo "<span class=\"email\"> ".$user['email']."</span><br/>";
+
+	// Stats
+	echo "<div class=\" stat totalcomments\">".sizeof($comments)." commentaries</div>";
+	echo "<div class=\"stat totalarticles\">".sizeof($articles)." articles written</div>";
+	echo "<div class=\"stat totalfavorites\">".sizeof($favorites)." favorites</div>";
+
+	echo "</div>";
+	echo "</div>";
+
+}
 ?>

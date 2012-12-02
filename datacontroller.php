@@ -484,6 +484,18 @@ class DataController{
 		return $news;
 	}
 
+ 	function getUserByid($id){
+		$user=$this->dataBase->query('SELECT * FROM user where id='.$id);
+		$user=$user->fetch(PDO::FETCH_ASSOC);
+		return $user;
+
+ 	}
+
+ 	function getUserComments($userid){
+ 		$comments=$this->dataBase->query('SELECT * FROM comment where userid='.$userid);
+		$comments=$comments->fetchAll(PDO::FETCH_ASSOC);
+		return $comments;
+ 	}
 };
 $data=new DataController($_database,$_siteurl);
 ?>

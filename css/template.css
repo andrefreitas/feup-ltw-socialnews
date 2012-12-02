@@ -1165,3 +1165,52 @@ html, body {
 .newsi .deletearticlel{
 	float:right;
 }
+
+/* Profile */
+.rolethumb{
+	padding:5px;
+	border:solid 1px #ccc;
+	width:112px;
+	height:128px;
+	float:left;
+}
+
+.profilebox{
+	margin-top:20px;
+}
+
+.profiledata{
+	width:300px;
+	float:left;
+	margin-left:20px;
+}
+
+.profilebox .email{
+	background:url(../imgs/email.png) no-repeat;
+	background-position:0px 5px;
+	padding-left:20px;
+}
+
+.profilebox .stat{
+	color:#646464;
+	font-size:13px;
+}
+
+.profilebox .totalcomments{
+	margin-top:20px;
+	background:url(../imgs/commentstiny.png) no-repeat;
+	padding-left:20px;
+}
+
+.profilebox .totalarticles{
+	background:url(../imgs/articlestiny.png) no-repeat;
+	padding-left:20px;
+	margin-top:5px;
+}
+
+.profilebox .totalfavorites{
+	background:url(../imgs/favoriteyes.png) no-repeat;
+	padding-left:20px;
+	margin-top:5px;
+
+}
