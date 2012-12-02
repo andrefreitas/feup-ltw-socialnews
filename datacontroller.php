@@ -418,6 +418,19 @@ class DataController{
 
 	}
 
+	function getNewsComments($newsid){
+		$comments=$this->dataBase->query("select * from comment where newsid=".$newsid);
+		$comments=$comments->fetchAll(PDO::FETCH_ASSOC);
+		return $comments;
+	}
+
+	function getCommentAuthor($id){
+		$authorid=$this->dataBase->query('SELECT userid FROM comment where id='.$id);
+		$authorid=$authorid->fetch(PDO::FETCH_ASSOC);
+		$author=$this->dataBase->query('SELECT * from user where id='.$authorid['userId']);
+		return $author->fetch(PDO::FETCH_ASSOC);
+	}
+
 };
 
 $data=new DataController($_database,$_siteurl);

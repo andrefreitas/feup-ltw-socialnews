@@ -165,5 +165,33 @@ function printFavoriteNews($userid){
     printNewsList($news);
 }
 
+function printComments($newsid){
+	global $data;
+	$comments=$data->getNewsComments($newsid);
+	$comments=array_reverse($comments);
+
+	echo "<h4 class=\"commentstitle\">Comments</h4>";
+
+	// Comment form
+	echo "<textarea rows=\"4\" cols=\"50\" placeholder=\"Insert a new comment\" class=\"newcomment\">";
+    echo "</textarea>"; 
+
+    echo "<button type=\"button\" class=\"addcommentbt\"> Add comment </button>";
+
+    echo "<div class=\"commentslist\">\n";
+    // Print every comment
+	foreach($comments as $row){
+		$datetime= new DateTime($row['datePosted']);
+		$author=$data->getCommentAuthor($row['id']);
+		$author=$author['name'];
+
+		echo "<div class=\"commenti\">";
+		echo "<span class=\"commentauthor\">".$author."</span>";
+		echo "<span class=\"commentdate\"> at ".$datetime->format('Y/m/d H:i:s')."</span><br/>";
+		echo "<div class=\"commentcont\">".$row['content']."</div>";
+		echo "</div>";
+	}
+	echo "</div>";
+}
 
 ?>

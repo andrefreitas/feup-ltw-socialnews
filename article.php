@@ -41,6 +41,8 @@
     						echo "<span class=\"tagbox\">".$tag."</span> ";
     					}
     					echo "</div>";
+
+                        printComments($news['id']);
     				?>
     				</div>
                 </div>
