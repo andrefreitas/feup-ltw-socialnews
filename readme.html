@@ -13,12 +13,7 @@
             	<div class="logoContainer">
                 	<img src="imgs/logo.png" alt="Socialus - social news for everyone" class="logo"/>
                 </div>
-                <div class="searchContainer">
-                    <form class="search-form cf">
-                        <input type="text" placeholder="Search an article here..." required>
-                        <button type="submit">Search</button>
-                    </form>
-                </div>
+        
             </div>
         </div>
         
@@ -34,18 +29,21 @@
 				<b>Nome do Grupo: </b> T6G1<br/>
 				<b>Membros: </b> <br/>
 				André Freitas - p.andrefreitas@gmail.com<br/>
-				Arkadiusz Gorgolewski - arkadiuszgorgolewski@gmail.com<br/><br/>
+				Arkadiusz Gorgolewski - arkadiuszgorgolewski@gmail.com<br/>
+                URL do Site no SIFEUP: http://paginas.fe.up.pt/~ei10036/socialus/index.php
+                <br/>   <br/>
+
 				
 				<b>Funcionalidades Implementadas: </b> <br/>
-				Criação de uma Base de Dados tendo em conta os requisitos do projeto<br/>
-				Criação de um WebServices Json em PHP que permite a pesquisa de notícias pela Data de início e fim e tags<br/>
-				Listagem das últimas notícias<br />
-				Criação de um formulário para inserir uma notícia
+				Foram implementadas todas as funcionalidades pedidas no enunciado recorrendo às tecnologias impostas. Nas alíneas em que o enunciado não era mais concreto, tomou-se a liberdade de implementar o requesito da maneira mais adequada. Na pesquisa de notícias do site fez-se uma implementação mais ao género do Facebook, no qual se devolve resultados à medida que se escreve e pelo matching das keywords que são escritas na caixa de texto. 
 				
 				<br/><br/><b>Notas: </b> <br/>
-				A base de dados foi desenhada de forma a que se possa adicionar acções nos diversos tipos de permissões. Para testar por exemplo, a funcionalidade pedida nesta primeira entrega
-				use os logins que constam em install/exampleData.sql, onde podem encontrar as password de cada utilizador nos comentários. Foi implementado o padrão MVC de modo a isolar o acesso à base de Dados
-				com a class DataController que consta em datacontroller.php. Foi usado um editor de html online "tinyeditor" que é open-source. Pode testar os webservices com : news.php?start_date=2010-11-01T01:01:01&end_date=2020-10-01T01:01:01&tags=Economia%20Feup%20Carros
+				A base de dados foi desenhada de forma a que se possa adicionar acções nos diversos tipos de permissões. Todos os logins constam em install/exampleData.sql, onde podem encontrar as password de cada utilizador nos comentários. Foi implementado o padrão MVC de modo a isolar o acesso à Base de Dados com a class DataController que consta em datacontroller.php, estando o componente View em view.php. Foi usado um editor de html online "tinyeditor" que é open-source. Não foram usadas bibliotecas para este trabalho e, exceptuando os conteúdos e ícones do site, foi tudo criado de raíz. <br/><br/>
+
+                Na página inicial constam as notícias mais populares que são ordenadas pelo número de comentários recorrendo a uma vista em SQL. Sempre que possível, usou-se SQL para simplificar soluções em PHP. <br/><br/>
+
+                Foram implementadas diversas APIs o que tornam a interface para remover utilizadores, notícias, comentários, etc mais fluente. De resto, houve uma preocupação em estruturar esta implementação tornando a manutenção de código muito mais fácil. Todo o site está validado consoante os Standards da W3C.
+
                 </div>
                
             </div>
