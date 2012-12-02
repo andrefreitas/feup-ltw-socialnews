@@ -472,9 +472,41 @@ function editProfile(obj,userid){
 }
 
 function saveProfile(userid){
+	var answer =confirm("Do you really want to change this profile?");
+	if(answer==false){
+		document.location.reload(true);
+		return false;
+	} 
+
+	// Fetch values
 	var profilebox=document.getElementsByClassName("profilebox")[0];
 	var form=profilebox.getElementsByTagName("form")[0];
-	console.log(form.elements["name"].value);
-	console.log(form.elements["email"].value);
-	console.log(form.elements["aboutme"].value);
+	name=form.elements["name"].value;
+	email=form.elements["email"].value;
+	about=form.elements["aboutme"].value;
+
+	// Check email
+	var emailreg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+	if(emailreg.test(email) == false && email.length>0) {
+    	alert('Invalid email!');
+    	return false;
+    }
+
+	// Submit changes
+	var requestURL="api/edituser.php?apikey=jabana123&userid="+userid;
+
+	if(name.length>0) requestURL=requestURL+"&name="+name;
+	if(email.length>0) requestURL=requestURL+"&email="+email;
+	if(about.length>0) requestURL=requestURL+"&about="+about;
+
+	// Edit
+	var xmlHttp = null;
+	xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET",requestURL, false );
+	xmlHttp.send( null );
+	document.location.reload(true);
+	var answer=JSON.parse(xmlHttp.responseText); 
+	if(answer.Answer!="Ok") return false;
+	else document.location.reload(true);
+
 }

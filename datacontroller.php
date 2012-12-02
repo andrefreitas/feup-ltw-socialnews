@@ -340,7 +340,7 @@ class DataController{
 		$id=$id['id'];
 		return $id;
 	}
-	function editUser($id,$name,$password,$email,$privilege){
+	function editUser($id,$name,$password,$email,$privilege,$about){
 		$privilegeid=$this->getPrivilegeId($privilege);
 		if($privilege!=NULL){
 			$this->dataBase->query('update user set privilegeid=\''.$privilegeid.'\' where id='.$id);
@@ -357,6 +357,10 @@ class DataController{
 
 		if($email!=NULL){
 			$this->dataBase->query('update user set email=\''.$email.'\' where id='.$id);
+		}
+
+		if($about!=NULL){
+			$this->dataBase->query('update user set about=\''.$about.'\' where id='.$id);
 		}
 
 	}
