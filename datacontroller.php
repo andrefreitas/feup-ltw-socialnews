@@ -81,6 +81,12 @@ class DataController{
 		$news=$news->fetch(PDO::FETCH_ASSOC);
 		return $news;
 	}
+
+	public function getNewsById($id){
+		$news=$this->dataBase->query('SELECT * FROM news where id='.$id);
+		$news=$news->fetch(PDO::FETCH_ASSOC);
+		return $news;
+	}
 	
 	public function getServerName(){
 		$servername=$this->dataBase->query('SELECT name from serverinfo');
@@ -439,6 +445,30 @@ class DataController{
 
 	function deleteServer($id){
 		$this->dataBase->query("delete from newsserver where serverid=".$id);
+	}
+
+	function editNews($id,$title,$content,$tagslist,$category){
+		if($title!=NULL)  $this->dataBase->query("update news set title=\"".$title."\" where id=".$id);
+		if($content!=NULL)  $this->dataBase->query("update news set content=\"".$content."\" where id=".$id);
+		if($tagslist!=NULL){
+			$this->dataBase->query("delete from newstag where newsId=".$id);
+			$tagsArray=explode(",", $tagslist);
+			foreach($tagsArray as $tag){
+				if(!$this->tagExists($tag)){
+					$this->insertTag($tag);
+				}
+				$tagid=$this->getTagId($tag);
+				
+				$this->dataBase->query('insert into newstag(newsId,tagId) values('.$id.','.$tagid.')');
+				
+			}
+		}
+		if($category!=NULL){
+			$categoryid= $this->getCategoryId($category);
+			$this->dataBase->query("update news set categoryid=\"".$categoryid."\" where id=".$id);
+		}
+
+
 	}
 
 };
